@@ -23,7 +23,7 @@
 <div class="card-panel mb-3">
     <div class="action-bar">
         <h2 class="mb-0">@(isTj ? Model.ServiceCategory.TitleTj : Model.ServiceCategory.TitleRu)</h2>
-        <span class="badge app-status-@Model.Status.ToString().ToLower()">@GetStatus(Model.Status)</span>
+        <span class="badge app-status-@Model.Status.ToString().ToLower()">@LocalizationHelper.ApplicationStatus(L, Model.Status)</span>
     </div>
 </div>
 
@@ -36,6 +36,12 @@
         <dt>@L["Phone"]</dt><dd>@Model.User.PhoneNumber</dd>
         <dt>@L["PassportSeries"]</dt>
         <dd>@Model.User.PassportSeries @Model.User.PassportNumber</dd>
+        <dt>@L["Inn"]</dt><dd>@Model.User.Inn</dd>
+        <dt>@L["PassportIssuedBy"]</dt><dd>@(Model.User.PassportIssuedBy ?? "—")</dd>
+        <dt>@L["PassportIssuedDate"]</dt><dd>@(Model.User.PassportIssuedDate?.ToString("dd.MM.yyyy") ?? "—")</dd>
+        <dt>@L["PassportExpiryDate"]</dt><dd>@(Model.User.PassportExpiryDate?.ToString("dd.MM.yyyy") ?? "—")</dd>
+        <dt>@L["PassportAddress"]</dt><dd>@Model.User.PassportAddress</dd>
+        <dt>@L["ActualAddress"]</dt><dd>@Model.User.ActualAddress</dd>
         <dt>@L["RegisteredAt"]</dt>
         <dd>@Model.SubmittedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
     </dl>
@@ -148,11 +154,11 @@
 
                     if (Model.Status == s)
                     {
-                        <option value="@((int)s)" selected="selected">@GetStatus(s)</option>
+                        <option value="@((int)s)" selected="selected">@LocalizationHelper.ApplicationStatus(L, s)</option>
                     }
                     else
                     {
-                        <option value="@((int)s)">@GetStatus(s)</option>
+                        <option value="@((int)s)">@LocalizationHelper.ApplicationStatus(L, s)</option>
                     }
                 }
             </select>
@@ -166,14 +172,3 @@
     </form>
 </div>
 
-@functions {
-    string GetStatus(ServiceApplicationStatus status) => status switch
-    {
-        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
-        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
-        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
-        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
-        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
-        _ => status.ToString()
-    };
-}

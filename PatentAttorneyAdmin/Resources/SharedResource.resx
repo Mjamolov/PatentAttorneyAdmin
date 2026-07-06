@@ -60,6 +60,7 @@
   </resheader>
   <data name="SiteTitle" xml:space="preserve"><value>Единый портал патентных услуг</value></data>
   <data name="NavHome" xml:space="preserve"><value>Главная</value></data>
+  <data name="NavMenu" xml:space="preserve"><value>Меню</value></data>
   <data name="NavNews" xml:space="preserve"><value>Новости</value></data>
   <data name="NavLogin" xml:space="preserve"><value>Войти</value></data>
   <data name="NavRegister" xml:space="preserve"><value>Регистрация</value></data>
@@ -78,6 +79,11 @@
   <data name="PassportNumber" xml:space="preserve"><value>Номер паспорта</value></data>
   <data name="PassportIssuedBy" xml:space="preserve"><value>Кем выдан</value></data>
   <data name="PassportIssuedDate" xml:space="preserve"><value>Дата выдачи</value></data>
+  <data name="PassportExpiryDate" xml:space="preserve"><value>Дата окончания срока действия</value></data>
+  <data name="Inn" xml:space="preserve"><value>ИНН</value></data>
+  <data name="PassportAddress" xml:space="preserve"><value>Адрес по паспорту</value></data>
+  <data name="ActualAddress" xml:space="preserve"><value>Фактический адрес</value></data>
+  <data name="InvalidInn" xml:space="preserve"><value>ИНН должен содержать от 9 до 20 символов</value></data>
   <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
   <data name="Email" xml:space="preserve"><value>Электронная почта</value></data>
   <data name="Password" xml:space="preserve"><value>Пароль</value></data>
@@ -130,6 +136,12 @@
   <data name="Back" xml:space="preserve"><value>Назад</value></data>
   <data name="Save" xml:space="preserve"><value>Сохранить</value></data>
   <data name="RegisteredAt" xml:space="preserve"><value>Дата регистрации</value></data>
+  <data name="SubmittedAt" xml:space="preserve"><value>Дата подачи</value></data>
+  <data name="RequestStatusOpen" xml:space="preserve"><value>Открыт</value></data>
+  <data name="RequestStatusInProgress" xml:space="preserve"><value>В работе</value></data>
+  <data name="RequestStatusAwaitingClient" xml:space="preserve"><value>Ожидает ответа клиента</value></data>
+  <data name="RequestStatusResolved" xml:space="preserve"><value>Решён</value></data>
+  <data name="RequestStatusClosed" xml:space="preserve"><value>Закрыт</value></data>
   <data name="TotalUsers" xml:space="preserve"><value>Всего пользователей</value></data>
   <data name="TotalRequests" xml:space="preserve"><value>Всего запросов</value></data>
   <data name="OpenRequests" xml:space="preserve"><value>Открытых запросов</value></data>
@@ -155,9 +167,9 @@
   <data name="DocApplicationLetter" xml:space="preserve"><value>Заявление на имя Директора Патентного ведомства</value></data>
   <data name="DocApplicationLetterHint" xml:space="preserve"><value>Загрузите заявление в формате PDF, JPG или PNG</value></data>
   <data name="DocPassportCopy" xml:space="preserve"><value>Копия паспорта гражданина</value></data>
-  <data name="DocPassportCopyHint" xml:space="preserve"><value>Нусхаи шиноснома / копия документа, удостоверяющего личность</value></data>
+  <data name="DocPassportCopyHint" xml:space="preserve"><value>Копия документа, удостоверяющего личность</value></data>
   <data name="DocDiplomaCopy" xml:space="preserve"><value>Копия документа об образовании (диплом)</value></data>
-  <data name="DocDiplomaCopyHint" xml:space="preserve"><value>Нусхаи ҳуҷҷат дар бораи ихтисос</value></data>
+  <data name="DocDiplomaCopyHint" xml:space="preserve"><value>Копия диплома или документа об образовании</value></data>
   <data name="DocPaymentProof" xml:space="preserve"><value>Подтверждение оплаты за обучение</value></data>
   <data name="DocPaymentProofHint" xml:space="preserve"><value>Документ, подтверждающий оплату услуги обучения</value></data>
   <data name="AppStatusSubmitted" xml:space="preserve"><value>Отправлена</value></data>
@@ -171,27 +183,27 @@
   <data name="DocGroupMain" xml:space="preserve"><value>Основные документы</value></data>
   <data name="DocGroupAdditional" xml:space="preserve"><value>Дополнительные документы</value></data>
   <data name="DocPersonnelForm" xml:space="preserve"><value>Личный листок по учёту кадров</value></data>
-  <data name="DocPersonnelFormHint" xml:space="preserve"><value>Варақаи баҳисобгирии кадрҳо</value></data>
+  <data name="DocPersonnelFormHint" xml:space="preserve"><value>Заполненный личный листок по учёту кадров</value></data>
   <data name="DocPhotos3x4" xml:space="preserve"><value>Две фотографии 3×4</value></data>
-  <data name="DocPhotos3x4Hint" xml:space="preserve"><value>Ду адад расми 3х4</value></data>
+  <data name="DocPhotos3x4Hint" xml:space="preserve"><value>Две цветные фотографии размером 3×4 см</value></data>
   <data name="DocDiplomaHigher" xml:space="preserve"><value>Копия диплома о высшем образовании</value></data>
-  <data name="DocDiplomaHigherHint" xml:space="preserve"><value>Нусхаи диплом оид ба таҳсилоти олӣ</value></data>
+  <data name="DocDiplomaHigherHint" xml:space="preserve"><value>Копия диплома о высшем образовании</value></data>
   <data name="DocPracticalWorkInfo" xml:space="preserve"><value>Сведения о практической работе в сфере охраны объектов промышленной собственности</value></data>
-  <data name="DocPracticalWorkInfoHint" xml:space="preserve"><value>Маълумоти хаттӣ доир ба кори амалии номзад (шаҳодатномаи курси АМЗ қабул аст)</value></data>
+  <data name="DocPracticalWorkInfoHint" xml:space="preserve"><value>Справка о практической работе (принимается сертификат курса ХОМС)</value></data>
   <data name="DocWorkBookExtract" xml:space="preserve"><value>Выписка из трудовой книжки</value></data>
-  <data name="DocWorkBookExtractHint" xml:space="preserve"><value>Иқтибос аз дафтарчаи меҳнатӣ</value></data>
+  <data name="DocWorkBookExtractHint" xml:space="preserve"><value>Выписка из трудовой книжки или трудового договора</value></data>
   <data name="DocCertificationPayment" xml:space="preserve"><value>Подтверждение оплаты за аттестацию</value></data>
-  <data name="DocCertificationPaymentHint" xml:space="preserve"><value>Ҳуҷҷате, ки пардохти маблағи аттестатсияро тасдиқ мекунад</value></data>
+  <data name="DocCertificationPaymentHint" xml:space="preserve"><value>Документ, подтверждающий оплату за аттестацию</value></data>
   <data name="DocVrisDiploma" xml:space="preserve"><value>Копия диплома (право, технические или естественные науки)</value></data>
-  <data name="DocVrisDiplomaHint" xml:space="preserve"><value>Нусхаи диплом дар бораи таҳсилот (ҳуқуқ, илмҳои техникӣ ё табиӣ)</value></data>
+  <data name="DocVrisDiplomaHint" xml:space="preserve"><value>Диплом по направлению: право, технические или естественные науки</value></data>
   <data name="DocAttestationDecision" xml:space="preserve"><value>Решение аттестационной комиссии</value></data>
-  <data name="DocAttestationDecisionHint" xml:space="preserve"><value>Қарори Комиссияи аттестатсионӣ</value></data>
+  <data name="DocAttestationDecisionHint" xml:space="preserve"><value>Решение аттестационной комиссии</value></data>
   <data name="DocSiCertificate" xml:space="preserve"><value>Копия свидетельства о регистрации СИ</value></data>
-  <data name="DocSiCertificateHint" xml:space="preserve"><value>Нусхаи шаҳодатномаи қайди СИ</value></data>
+  <data name="DocSiCertificateHint" xml:space="preserve"><value>Копия свидетельства о регистрации средства индивидуализации</value></data>
   <data name="DocRegisterCertificate" xml:space="preserve"><value>Копия свидетельства о регистрации в Реестре</value></data>
-  <data name="DocRegisterCertificateHint" xml:space="preserve"><value>Нусхаи шаҳодатномаи бақайдгирӣ дар Феҳрист</value></data>
+  <data name="DocRegisterCertificateHint" xml:space="preserve"><value>Копия свидетельства о регистрации в Реестре патентных поверенных</value></data>
   <data name="DocStateFeePayment" xml:space="preserve"><value>Подтверждение оплаты государственной пошлины</value></data>
-  <data name="DocStateFeePaymentHint" xml:space="preserve"><value>Ҳуҷҷати тасдиқкунандаи боҷи давлатӣ</value></data>
+  <data name="DocStateFeePaymentHint" xml:space="preserve"><value>Документ, подтверждающий оплату государственной пошлины</value></data>
   <data name="AvailableServices" xml:space="preserve"><value>Доступные услуги</value></data>
   <data name="SelectServiceToApply" xml:space="preserve"><value>Выберите услугу и загрузите необходимые документы</value></data>
   <data name="ResubmitApplication" xml:space="preserve"><value>Отправить исправленные документы</value></data>

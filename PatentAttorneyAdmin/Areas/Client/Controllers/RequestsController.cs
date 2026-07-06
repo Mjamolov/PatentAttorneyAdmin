@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PatentAttorneyAdmin.Data;
+using PatentAttorneyAdmin.Infrastructure;
 using PatentAttorneyAdmin.Models;
 using PatentAttorneyAdmin.Services;
 using PatentAttorneyAdmin.ViewModels;
@@ -161,6 +162,11 @@ public class RequestsController : Controller
             .OrderBy(s => s.SortOrder)
             .ToListAsync();
 
-        ViewBag.Services = new SelectList(services, "Id", "TitleRu", selectedId);
+        var isTj = LocalizationHelper.IsTajik(HttpContext);
+        ViewBag.Services = new SelectList(
+            services.Select(s => new { s.Id, Title = isTj ? s.TitleTj : s.TitleRu }),
+            "Id",
+            "Title",
+            selectedId);
     }
 }

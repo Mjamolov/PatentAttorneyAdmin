@@ -1,4 +1,5 @@
 @model IEnumerable<PatentAttorneyAdmin.Models.ApplicationUser>
+@using PatentAttorneyAdmin.Infrastructure
 @{
     ViewData["Title"] = L["Users"];
 }
@@ -24,11 +25,7 @@
                     <td>@user.PhoneNumber</td>
                     <td>
                         <span class="badge status-@user.Status.ToString().ToLower()">
-                            @(user.Status switch {
-                                PatentAttorneyAdmin.Models.UserStatus.Pending => L["StatusPending"],
-                                PatentAttorneyAdmin.Models.UserStatus.Active => L["StatusActive"],
-                                _ => L["StatusDisabled"]
-                            })
+                            @LocalizationHelper.UserStatusLabel(L, user.Status)
                         </span>
                     </td>
                     <td>@user.RegisteredAt.ToLocalTime().ToString("dd.MM.yyyy")</td>

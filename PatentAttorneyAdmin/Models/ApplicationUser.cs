@@ -11,6 +11,10 @@ public class ApplicationUser : IdentityUser
     public string PassportNumber { get; set; } = string.Empty;
     public string? PassportIssuedBy { get; set; }
     public DateTime? PassportIssuedDate { get; set; }
+    public DateTime? PassportExpiryDate { get; set; }
+    public string Inn { get; set; } = string.Empty;
+    public string PassportAddress { get; set; } = string.Empty;
+    public string ActualAddress { get; set; } = string.Empty;
     public string? PassportFrontPath { get; set; }
     public string? PassportBackPath { get; set; }
     public UserStatus Status { get; set; } = UserStatus.Pending;

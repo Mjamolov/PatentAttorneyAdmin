@@ -1,4 +1,5 @@
 @model PatentAttorneyAdmin.Models.ClientRequest
+@using PatentAttorneyAdmin.Infrastructure
 @{
     ViewData["Title"] = Model.Subject;
 }
@@ -7,12 +8,8 @@
     <dl class="detail-list">
         <dt>@L["Subject"]</dt><dd>@Model.Subject</dd>
         <dt>@L["RequestType"]</dt>
-        <dd>@(Model.Type switch {
-            PatentAttorneyAdmin.Models.RequestType.Invitation => L["TypeInvitation"],
-            PatentAttorneyAdmin.Models.RequestType.DocumentCorrection => L["TypeDocumentCorrection"],
-            _ => L["TypeGeneral"]
-        })</dd>
-        <dt>@L["Status"]</dt><dd>@Model.Status</dd>
+        <dd>@LocalizationHelper.RequestTypeLabel(L, Model.Type)</dd>
+        <dt>@L["Status"]</dt><dd>@LocalizationHelper.RequestStatusLabel(L, Model.Status)</dd>
     </dl>
     <a class="btn btn-sm btn-outline-secondary" asp-action="Index">@L["Back"]</a>
 </div>

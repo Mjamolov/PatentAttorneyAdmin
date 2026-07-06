@@ -1,4 +1,5 @@
 @model IEnumerable<PatentAttorneyAdmin.Models.ClientRequest>
+@using PatentAttorneyAdmin.Infrastructure
 @{
     ViewData["Title"] = L["Requests"];
 }
@@ -28,12 +29,8 @@
                         <td>@req.Id</td>
                         <td>@req.Subject</td>
                         <td>@req.User.LastName @req.User.FirstName</td>
-                        <td>@(req.Type switch {
-                            PatentAttorneyAdmin.Models.RequestType.Invitation => L["TypeInvitation"],
-                            PatentAttorneyAdmin.Models.RequestType.DocumentCorrection => L["TypeDocumentCorrection"],
-                            _ => L["TypeGeneral"]
-                        })</td>
-                        <td>@req.Status</td>
+                        <td>@LocalizationHelper.RequestTypeLabel(L, req.Type)</td>
+                        <td>@LocalizationHelper.RequestStatusLabel(L, req.Status)</td>
                         <td><a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@req.Id">@L["View"]</a></td>
                     </tr>
                 }

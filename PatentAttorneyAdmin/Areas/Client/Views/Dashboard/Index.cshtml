@@ -36,7 +36,7 @@
                 {
                     <tr>
                         <td>@(isTj ? app.ServiceCategory.TitleTj : app.ServiceCategory.TitleRu)</td>
-                        <td><span class="badge app-status-@app.Status.ToString().ToLower()">@GetAppStatus(app.Status)</span></td>
+                        <td><span class="badge app-status-@app.Status.ToString().ToLower()">@LocalizationHelper.ApplicationStatus(L, app.Status)</span></td>
                         <td><a class="btn btn-sm btn-outline-primary" asp-controller="ServiceApplications" asp-action="Details" asp-route-id="@app.Id">@L["View"]</a></td>
                     </tr>
                 }
@@ -66,7 +66,7 @@
                 {
                     <tr>
                         <td>@req.Subject</td>
-                        <td>@req.Status</td>
+                        <td>@LocalizationHelper.RequestStatusLabel(L, req.Status)</td>
                         <td><a class="btn btn-sm btn-outline-primary" asp-controller="Requests" asp-action="Details" asp-route-id="@req.Id">@L["View"]</a></td>
                     </tr>
                 }
@@ -75,14 +75,3 @@
     }
 </div>
 
-@functions {
-    string GetAppStatus(ServiceApplicationStatus status) => status switch
-    {
-        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
-        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
-        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
-        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
-        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
-        _ => status.ToString()
-    };
-}

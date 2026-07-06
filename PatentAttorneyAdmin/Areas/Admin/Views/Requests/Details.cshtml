@@ -1,4 +1,6 @@
 @model PatentAttorneyAdmin.Models.ClientRequest
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
 @{
     ViewData["Title"] = Model.Subject;
 }
@@ -8,21 +10,17 @@
         <dt>@L["Subject"]</dt><dd>@Model.Subject</dd>
         <dt>@L["LastName"]</dt><dd>@Model.User.LastName @Model.User.FirstName</dd>
         <dt>@L["RequestType"]</dt>
-        <dd>@(Model.Type switch {
-            PatentAttorneyAdmin.Models.RequestType.Invitation => L["TypeInvitation"],
-            PatentAttorneyAdmin.Models.RequestType.DocumentCorrection => L["TypeDocumentCorrection"],
-            _ => L["TypeGeneral"]
-        })</dd>
-        <dt>@L["Status"]</dt><dd>@Model.Status</dd>
+        <dd>@LocalizationHelper.RequestTypeLabel(L, Model.Type)</dd>
+        <dt>@L["Status"]</dt><dd>@LocalizationHelper.RequestStatusLabel(L, Model.Status)</dd>
     </dl>
 
     <form asp-action="SetStatus" method="post" class="action-bar">
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="@Model.Id" />
         <select name="status" class="form-control form-control-sm" style="width:auto;display:inline-block;">
-            @foreach (PatentAttorneyAdmin.Models.RequestStatus s in Enum.GetValues(typeof(PatentAttorneyAdmin.Models.RequestStatus)))
+            @foreach (RequestStatus s in Enum.GetValues(typeof(RequestStatus)))
             {
-                <option value="@((int)s)" selected="@(Model.Status == s)">@s</option>
+                <option value="@((int)s)" selected="@(Model.Status == s)">@LocalizationHelper.RequestStatusLabel(L, s)</option>
             }
         </select>
         <button type="submit" class="btn btn-sm btn-primary">@L["Save"]</button>

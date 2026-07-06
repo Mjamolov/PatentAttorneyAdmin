@@ -6,16 +6,6 @@
     var hasPendingCorrections = (bool)ViewBag.HasPendingCorrections;
     ViewData["Title"] = $"{L["MyApplications"]} #{Model.Id}";
     var serviceCode = Model.ServiceCategory.ServiceCode;
-
-    string StatusLabel(ServiceApplicationStatus status) => status switch
-    {
-        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
-        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
-        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
-        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
-        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
-        _ => status.ToString()
-    };
 }
 
 <div class="card-panel mb-3">
@@ -24,10 +14,10 @@
         <dt>@L["Status"]</dt>
         <dd>
             <span class="badge app-status-@(hasPendingCorrections ? "needscorrection" : Model.Status.ToString().ToLower())">
-                @(hasPendingCorrections ? L["AppStatusNeedsCorrection"] : StatusLabel(Model.Status))
+                @(hasPendingCorrections ? L["AppStatusNeedsCorrection"] : LocalizationHelper.ApplicationStatus(L, Model.Status))
             </span>
         </dd>
-        <dt>@L["RegisteredAt"]</dt>
+        <dt>@L["SubmittedAt"]</dt>
         <dd>@Model.SubmittedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
     </dl>
 

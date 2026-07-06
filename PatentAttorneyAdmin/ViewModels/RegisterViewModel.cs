@@ -31,6 +31,24 @@ public class RegisterViewModel
     public DateTime? PassportIssuedDate { get; set; }
 
     [Required(ErrorMessage = "Required")]
+    [Display(Name = "PassportExpiryDate")]
+    [DataType(DataType.Date)]
+    public DateTime? PassportExpiryDate { get; set; }
+
+    [Required(ErrorMessage = "Required")]
+    [StringLength(20, MinimumLength = 9, ErrorMessage = "InvalidInn")]
+    [Display(Name = "Inn")]
+    public string Inn { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Required")]
+    [Display(Name = "PassportAddress")]
+    public string PassportAddress { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Required")]
+    [Display(Name = "ActualAddress")]
+    public string ActualAddress { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Required")]
     [RegularExpression(@"^\+?[\d\s\-()]{9,20}$", ErrorMessage = "InvalidPhone")]
     [Display(Name = "Phone")]
     public string Phone { get; set; } = string.Empty;

@@ -51,14 +51,40 @@
                         <span asp-validation-for="PassportNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="Inn"></label>
+                        <input asp-for="Inn" class="form-control" inputmode="numeric" />
+                        <span asp-validation-for="Inn" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
                         <label asp-for="PassportIssuedDate"></label>
                         <input asp-for="PassportIssuedDate" class="form-control" type="date" />
+                        <span asp-validation-for="PassportIssuedDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PassportExpiryDate"></label>
+                        <input asp-for="PassportExpiryDate" class="form-control" type="date" />
+                        <span asp-validation-for="PassportExpiryDate" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="PassportIssuedBy"></label>
                     <input asp-for="PassportIssuedBy" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PassportAddress"></label>
+                    <textarea asp-for="PassportAddress" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="PassportAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ActualAddress"></label>
+                    <textarea asp-for="ActualAddress" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="ActualAddress" class="text-danger"></span>
                 </div>
 
                 <div class="form-row">

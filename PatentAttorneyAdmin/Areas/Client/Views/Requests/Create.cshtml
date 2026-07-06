@@ -1,4 +1,6 @@
 @model PatentAttorneyAdmin.ViewModels.CreateRequestViewModel
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
 @{
     ViewData["Title"] = L["CreateRequest"];
 }
@@ -18,14 +20,14 @@
         <div class="form-group">
             <label asp-for="Type">@L["RequestType"]</label>
             <select asp-for="Type" class="form-control">
-                <option value="@((int)PatentAttorneyAdmin.Models.RequestType.General)">@L["TypeGeneral"]</option>
-                <option value="@((int)PatentAttorneyAdmin.Models.RequestType.Invitation)">@L["TypeInvitation"]</option>
-                <option value="@((int)PatentAttorneyAdmin.Models.RequestType.DocumentCorrection)">@L["TypeDocumentCorrection"]</option>
+                <option value="@((int)RequestType.General)">@LocalizationHelper.RequestTypeLabel(L, RequestType.General)</option>
+                <option value="@((int)RequestType.Invitation)">@LocalizationHelper.RequestTypeLabel(L, RequestType.Invitation)</option>
+                <option value="@((int)RequestType.DocumentCorrection)">@LocalizationHelper.RequestTypeLabel(L, RequestType.DocumentCorrection)</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label asp-for="Subject"></label>
+            <label asp-for="Subject">@L["Subject"]</label>
             <input asp-for="Subject" class="form-control" />
             <span asp-validation-for="Subject" class="text-danger"></span>
         </div>
@@ -37,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Attachment"></label>
+            <label asp-for="Attachment">@L["Attachment"]</label>
             <input asp-for="Attachment" class="form-control" type="file" accept="@UploadFileTypes.AcceptAttribute" />
         </div>
 

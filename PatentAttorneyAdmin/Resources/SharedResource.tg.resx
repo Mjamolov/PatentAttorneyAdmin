@@ -60,6 +60,7 @@
   </resheader>
   <data name="SiteTitle" xml:space="preserve"><value>Портали ягонаи хизматрасонии патентӣ</value></data>
   <data name="NavHome" xml:space="preserve"><value>Асосӣ</value></data>
+  <data name="NavMenu" xml:space="preserve"><value>Меню</value></data>
   <data name="NavNews" xml:space="preserve"><value>Хабарҳо</value></data>
   <data name="NavLogin" xml:space="preserve"><value>Воридшавӣ</value></data>
   <data name="NavRegister" xml:space="preserve"><value>Сабти ном</value></data>
@@ -78,6 +79,11 @@
   <data name="PassportNumber" xml:space="preserve"><value>Рақами шиноснома</value></data>
   <data name="PassportIssuedBy" xml:space="preserve"><value>Аз тарафи кӣ дода шудааст</value></data>
   <data name="PassportIssuedDate" xml:space="preserve"><value>Санаи додан</value></data>
+  <data name="PassportExpiryDate" xml:space="preserve"><value>Санаи анҷоми эътибор</value></data>
+  <data name="Inn" xml:space="preserve"><value>РМА (ИНН)</value></data>
+  <data name="PassportAddress" xml:space="preserve"><value>Суроға ба мувофиқи шиноснома</value></data>
+  <data name="ActualAddress" xml:space="preserve"><value>Суроғаи воқеӣ</value></data>
+  <data name="InvalidInn" xml:space="preserve"><value>РМА бояд аз 9 то 20 рақам иборат бошад</value></data>
   <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
   <data name="Email" xml:space="preserve"><value>Почтаи электронӣ</value></data>
   <data name="Password" xml:space="preserve"><value>Парол</value></data>
@@ -130,6 +136,12 @@
   <data name="Back" xml:space="preserve"><value>Бозгашт</value></data>
   <data name="Save" xml:space="preserve"><value>Нигоҳ доштан</value></data>
   <data name="RegisteredAt" xml:space="preserve"><value>Санаи сабти ном</value></data>
+  <data name="SubmittedAt" xml:space="preserve"><value>Санаи пешниҳод</value></data>
+  <data name="RequestStatusOpen" xml:space="preserve"><value>Кушода</value></data>
+  <data name="RequestStatusInProgress" xml:space="preserve"><value>Дар кор</value></data>
+  <data name="RequestStatusAwaitingClient" xml:space="preserve"><value>Интизори ҷавоби мизоҷ</value></data>
+  <data name="RequestStatusResolved" xml:space="preserve"><value>Ҳал шуд</value></data>
+  <data name="RequestStatusClosed" xml:space="preserve"><value>Пӯшида</value></data>
   <data name="TotalUsers" xml:space="preserve"><value>Ҳамаи корбарон</value></data>
   <data name="TotalRequests" xml:space="preserve"><value>Ҳамаи дархостҳо</value></data>
   <data name="OpenRequests" xml:space="preserve"><value>Дархостҳои кушода</value></data>

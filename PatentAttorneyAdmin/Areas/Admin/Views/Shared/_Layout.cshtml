@@ -1,6 +1,3 @@
-@using Microsoft.AspNetCore.Localization
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<PatentAttorneyAdmin.Resources.SharedResource> L
 @{
     var culture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name ?? "ru";
     var returnUrl = Context.Request.Path + Context.Request.QueryString;
@@ -35,7 +32,7 @@
         <div class="admin-content">
             <header class="admin-topbar">
                 <div class="topbar-start">
-                    <button type="button" class="icon-btn mobile-nav-toggle" id="adminNavToggle" aria-expanded="false" aria-controls="adminSidebar" title="Menu">
+                    <button type="button" class="icon-btn mobile-nav-toggle" id="adminNavToggle" aria-expanded="false" aria-controls="adminSidebar" title="@L["NavMenu"]">
                         <i class="bi bi-list"></i>
                     </button>
                     <h1>@ViewData["Title"]</h1>

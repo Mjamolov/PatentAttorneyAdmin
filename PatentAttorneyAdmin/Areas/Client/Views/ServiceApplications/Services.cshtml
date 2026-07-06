@@ -5,16 +5,6 @@
     var isTj = (bool)ViewBag.IsTj;
     var activeByService = (Dictionary<int, ServiceApplication>)ViewBag.ActiveByService;
     ViewData["Title"] = L["AvailableServices"];
-
-    string StatusLabel(ServiceApplicationStatus status) => status switch
-    {
-        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
-        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
-        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
-        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
-        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
-        _ => status.ToString()
-    };
 }
 
 <div class="card-panel mb-3">
@@ -35,7 +25,7 @@
                 {
                     var needsCorrection = ApplicationCorrectionHelper.HasPendingCorrections(activeApp);
                     <span class="badge app-status-@(needsCorrection ? "needscorrection" : activeApp.Status.ToString().ToLower())">
-                        @(needsCorrection ? L["AppStatusNeedsCorrection"] : StatusLabel(activeApp.Status))
+                        @(needsCorrection ? L["AppStatusNeedsCorrection"] : LocalizationHelper.ApplicationStatus(L, activeApp.Status))
                     </span>
                     @if (needsCorrection)
                     {

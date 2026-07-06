@@ -271,10 +271,7 @@ public class ServiceApplicationsController : Controller
         return application;
     }
 
-    private async Task<List<ServiceApplicationDocument>?> CreateDocumentEntitiesAsync(
-        int applicationId,
-        ServiceApplicationSubmitViewModel model,
-        IReadOnlyList<DocumentRequirement> requirements)
+    private async Task<List<ServiceApplicationDocument>?> CreateDocumentEntitiesAsync(int applicationId, ServiceApplicationSubmitViewModel model, IReadOnlyList<DocumentRequirement> requirements)
     {
         var documents = new List<ServiceApplicationDocument>();
 
@@ -323,10 +320,7 @@ public class ServiceApplicationsController : Controller
         }
     }
 
-    private void ValidateDocumentsForResubmit(
-        ServiceApplicationSubmitViewModel model,
-        IReadOnlyList<DocumentRequirement> requirements,
-        HashSet<int> documentsToCorrect)
+    private void ValidateDocumentsForResubmit(ServiceApplicationSubmitViewModel model, IReadOnlyList<DocumentRequirement> requirements, HashSet<int> documentsToCorrect)
     {
         model.Documents ??= new Dictionary<int, IFormFile>();
 
@@ -341,10 +335,7 @@ public class ServiceApplicationsController : Controller
         }
     }
 
-    private async Task<bool> ApplyResubmitDocumentsAsync(
-        ServiceApplication application,
-        ServiceApplicationSubmitViewModel model,
-        HashSet<int> documentsToCorrect)
+    private async Task<bool> ApplyResubmitDocumentsAsync(ServiceApplication application, ServiceApplicationSubmitViewModel model, HashSet<int> documentsToCorrect)
     {
         foreach (var key in documentsToCorrect)
         {

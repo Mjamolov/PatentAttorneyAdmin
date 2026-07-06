@@ -1,4 +1,5 @@
 @model PatentAttorneyAdmin.Models.ApplicationUser
+@using PatentAttorneyAdmin.Infrastructure
 @{
     ViewData["Title"] = L["Profile"];
 }
@@ -9,14 +10,16 @@
         <dt>@L["Email"]</dt><dd>@Model.Email</dd>
         <dt>@L["Phone"]</dt><dd>@Model.PhoneNumber</dd>
         <dt>@L["PassportSeries"]</dt><dd>@Model.PassportSeries @Model.PassportNumber</dd>
+        <dt>@L["Inn"]</dt><dd>@Model.Inn</dd>
+        <dt>@L["PassportIssuedBy"]</dt><dd>@(Model.PassportIssuedBy ?? "—")</dd>
+        <dt>@L["PassportIssuedDate"]</dt><dd>@(Model.PassportIssuedDate?.ToString("dd.MM.yyyy") ?? "—")</dd>
+        <dt>@L["PassportExpiryDate"]</dt><dd>@(Model.PassportExpiryDate?.ToString("dd.MM.yyyy") ?? "—")</dd>
+        <dt>@L["PassportAddress"]</dt><dd>@Model.PassportAddress</dd>
+        <dt>@L["ActualAddress"]</dt><dd>@Model.ActualAddress</dd>
         <dt>@L["Status"]</dt>
         <dd>
             <span class="badge status-@Model.Status.ToString().ToLower()">
-                @(Model.Status switch {
-                    PatentAttorneyAdmin.Models.UserStatus.Pending => L["StatusPending"],
-                    PatentAttorneyAdmin.Models.UserStatus.Active => L["StatusActive"],
-                    _ => L["StatusDisabled"]
-                })
+                @LocalizationHelper.UserStatusLabel(L, Model.Status)
             </span>
         </dd>
     </dl>
