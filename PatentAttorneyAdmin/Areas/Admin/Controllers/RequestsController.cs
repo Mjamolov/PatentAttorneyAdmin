@@ -17,10 +17,7 @@ public class RequestsController : Controller
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IFileStorageService _fileStorage;
 
-    public RequestsController(
-        ApplicationDbContext context,
-        UserManager<ApplicationUser> userManager,
-        IFileStorageService fileStorage)
+    public RequestsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IFileStorageService fileStorage)
     {
         _context = context;
         _userManager = userManager;

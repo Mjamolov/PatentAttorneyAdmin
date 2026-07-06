@@ -22,13 +22,7 @@ public class AccountController : Controller
     private readonly IFileStorageService _fileStorage;
     private readonly IStringLocalizer<SharedResource> _localizer;
 
-    public AccountController(
-        ApplicationDbContext context,
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IEmailService emailService,
-        IFileStorageService fileStorage,
-        IStringLocalizer<SharedResource> localizer)
+    public AccountController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailService emailService, IFileStorageService fileStorage, IStringLocalizer<SharedResource> localizer)
     {
         _context = context;
         _userManager = userManager;
@@ -211,9 +205,7 @@ public class AccountController : Controller
         if (service == null)
             return;
 
-        ViewBag.ServiceName = LocalizationHelper.IsTajik(HttpContext)
-            ? service.TitleTj
-            : service.TitleRu;
+        ViewBag.ServiceName = LocalizationHelper.IsTajik(HttpContext) ? service.TitleTj : service.TitleRu;
     }
 
     private IActionResult RedirectToCabinet()

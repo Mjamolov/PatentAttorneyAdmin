@@ -47,6 +47,7 @@ public static class DbSeeder
         await SeedServicesAsync(context);
     }
 
+
     private static async Task SeedServicesAsync(ApplicationDbContext context)
     {
         var services = AllServices();

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -9,51 +8,48 @@ namespace PatentAttorneyAdmin.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "ActualAddress",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('AspNetUsers', 'ActualAddress') IS NULL
+    ALTER TABLE AspNetUsers ADD ActualAddress nvarchar(max) NOT NULL CONSTRAINT DF_AspNetUsers_ActualAddress DEFAULT '';
 
-            migrationBuilder.AddColumn<string>(
-                name: "Inn",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+IF COL_LENGTH('AspNetUsers', 'Inn') IS NULL
+    ALTER TABLE AspNetUsers ADD Inn nvarchar(max) NOT NULL CONSTRAINT DF_AspNetUsers_Inn DEFAULT '';
 
-            migrationBuilder.AddColumn<string>(
-                name: "PassportAddress",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+IF COL_LENGTH('AspNetUsers', 'PassportAddress') IS NULL
+    ALTER TABLE AspNetUsers ADD PassportAddress nvarchar(max) NOT NULL CONSTRAINT DF_AspNetUsers_PassportAddress DEFAULT '';
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "PassportExpiryDate",
-                table: "AspNetUsers",
-                type: "datetime2",
-                nullable: true);
+IF COL_LENGTH('AspNetUsers', 'PassportExpiryDate') IS NULL
+    ALTER TABLE AspNetUsers ADD PassportExpiryDate datetime2 NULL;
+");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "ActualAddress",
-                table: "AspNetUsers");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('AspNetUsers', 'PassportExpiryDate') IS NOT NULL
+    ALTER TABLE AspNetUsers DROP COLUMN PassportExpiryDate;
 
-            migrationBuilder.DropColumn(
-                name: "Inn",
-                table: "AspNetUsers");
+IF COL_LENGTH('AspNetUsers', 'PassportAddress') IS NOT NULL
+BEGIN
+    IF EXISTS (SELECT 1 FROM sys.default_constraints WHERE name = 'DF_AspNetUsers_PassportAddress')
+        ALTER TABLE AspNetUsers DROP CONSTRAINT DF_AspNetUsers_PassportAddress;
+    ALTER TABLE AspNetUsers DROP COLUMN PassportAddress;
+END
 
-            migrationBuilder.DropColumn(
-                name: "PassportAddress",
-                table: "AspNetUsers");
+IF COL_LENGTH('AspNetUsers', 'Inn') IS NOT NULL
+BEGIN
+    IF EXISTS (SELECT 1 FROM sys.default_constraints WHERE name = 'DF_AspNetUsers_Inn')
+        ALTER TABLE AspNetUsers DROP CONSTRAINT DF_AspNetUsers_Inn;
+    ALTER TABLE AspNetUsers DROP COLUMN Inn;
+END
 
-            migrationBuilder.DropColumn(
-                name: "PassportExpiryDate",
-                table: "AspNetUsers");
+IF COL_LENGTH('AspNetUsers', 'ActualAddress') IS NOT NULL
+BEGIN
+    IF EXISTS (SELECT 1 FROM sys.default_constraints WHERE name = 'DF_AspNetUsers_ActualAddress')
+        ALTER TABLE AspNetUsers DROP CONSTRAINT DF_AspNetUsers_ActualAddress;
+    ALTER TABLE AspNetUsers DROP COLUMN ActualAddress;
+END
+");
         }
     }
 }

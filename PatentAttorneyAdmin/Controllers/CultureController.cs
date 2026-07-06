@@ -16,9 +16,7 @@ public class CultureController : Controller
         if (!SupportedCultures.Contains(culture))
             culture = "ru";
 
-        Response.Cookies.Append(
-            CookieRequestCultureProvider.DefaultCookieName,
-            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+        Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
             new CookieOptions
             {
                 Expires = DateTimeOffset.UtcNow.AddYears(1),

@@ -19,10 +19,7 @@ public class ServiceApplicationsController : Controller
     private readonly IEmailService _emailService;
     private readonly IStringLocalizer<SharedResource> _localizer;
 
-    public ServiceApplicationsController(
-        ApplicationDbContext context,
-        IEmailService emailService,
-        IStringLocalizer<SharedResource> localizer)
+    public ServiceApplicationsController(ApplicationDbContext context, IEmailService emailService, IStringLocalizer<SharedResource> localizer)
     {
         _context = context;
         _emailService = emailService;

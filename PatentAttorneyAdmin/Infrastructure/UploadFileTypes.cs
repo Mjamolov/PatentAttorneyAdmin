@@ -11,8 +11,7 @@ public static class UploadFileTypes
         ".docx"
     };
 
-    public const string AcceptAttribute =
-        ".jpg,.jpeg,.pdf,.doc,.docx,image/jpeg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+    public const string AcceptAttribute = ".jpg,.jpeg,.pdf,.doc,.docx,image/jpeg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
     public static bool IsAllowed(string? fileName)
     {
