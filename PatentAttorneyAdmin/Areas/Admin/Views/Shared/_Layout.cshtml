@@ -1,0 +1,60 @@
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<PatentAttorneyAdmin.Resources.SharedResource> L
+@{
+    var culture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name ?? "ru";
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="@culture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>@ViewData["Title"] - @L["NavAdmin"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">@L["NavAdmin"]</div>
+            <nav>
+                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-speedometer2"></i> @L["Dashboard"]</a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bi bi-people"></i> @L["Users"]</a>
+                <a asp-area="Admin" asp-controller="ServiceApplications" asp-action="Index"><i class="bi bi-file-earmark-text"></i> @L["ServiceApplications"]</a>
+                <a asp-area="Admin" asp-controller="Requests" asp-action="Index"><i class="bi bi-chat-dots"></i> @L["Requests"]</a>
+                <a asp-controller="Home" asp-action="Index" asp-area=""><i class="bi bi-house"></i> @L["NavHome"]</a>
+            </nav>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="mt-auto">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-outline-light btn-sm w-100">@L["NavLogout"]</button>
+            </form>
+        </aside>
+        <div class="admin-content">
+            <header class="admin-topbar">
+                <div class="topbar-start">
+                    <button type="button" class="icon-btn mobile-nav-toggle" id="adminNavToggle" aria-expanded="false" aria-controls="adminSidebar" title="Menu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="lang-switcher">
+                    <form asp-controller="Culture" asp-action="Set" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="returnUrl" value="@returnUrl" />
+                        <button type="submit" name="culture" value="ru" class="lang-btn @(culture == "ru" ? "active" : "")">RU</button>
+                        <button type="submit" name="culture" value="tg" class="lang-btn @(culture == "tg" ? "active" : "")">TJ</button>
+                    </form>
+                </div>
+            </header>
+            <main class="admin-main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

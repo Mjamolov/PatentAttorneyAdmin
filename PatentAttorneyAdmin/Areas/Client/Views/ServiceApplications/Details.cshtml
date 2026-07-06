@@ -1,0 +1,97 @@
+@model PatentAttorneyAdmin.Models.ServiceApplication
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    var isTj = (bool)ViewBag.IsTj;
+    var hasPendingCorrections = (bool)ViewBag.HasPendingCorrections;
+    ViewData["Title"] = $"{L["MyApplications"]} #{Model.Id}";
+    var serviceCode = Model.ServiceCategory.ServiceCode;
+
+    string StatusLabel(ServiceApplicationStatus status) => status switch
+    {
+        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
+        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
+        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
+        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
+        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
+        _ => status.ToString()
+    };
+}
+
+<div class="card-panel mb-3">
+    <h2>@(isTj ? Model.ServiceCategory.TitleTj : Model.ServiceCategory.TitleRu)</h2>
+    <dl class="detail-list">
+        <dt>@L["Status"]</dt>
+        <dd>
+            <span class="badge app-status-@(hasPendingCorrections ? "needscorrection" : Model.Status.ToString().ToLower())">
+                @(hasPendingCorrections ? L["AppStatusNeedsCorrection"] : StatusLabel(Model.Status))
+            </span>
+        </dd>
+        <dt>@L["RegisteredAt"]</dt>
+        <dd>@Model.SubmittedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+
+    @if (hasPendingCorrections)
+    {
+        <div class="waiting-notice mt-3" style="background:#fde2d4;border-color:#f5c6a5;color:#8a3b12;">
+            <i class="bi bi-exclamation-triangle"></i>
+            @L["CorrectionRequiredNotice"]
+        </div>
+        <p class="text-muted">@L["ResubmitNoticePartial"]</p>
+        <a class="btn btn-primary btn-lg mt-3" asp-action="Resubmit" asp-route-id="@Model.Id">
+            <i class="bi bi-upload"></i> @L["ResubmitApplication"]
+        </a>
+    }
+    else if (Model.Status == ServiceApplicationStatus.Submitted || Model.Status == ServiceApplicationStatus.UnderReview)
+    {
+        <div class="waiting-notice mt-3">
+            <i class="bi bi-hourglass-split"></i>
+            @L["ApplicationWaitingNotice"]
+        </div>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.StaffComment))
+    {
+        <div class="staff-response mt-3">
+            <strong>@L["StaffResponse"]:</strong>
+            <p>@Model.StaffComment</p>
+        </div>
+    }
+
+    <a class="btn btn-outline-secondary btn-sm mt-3" asp-action="Index">@L["Back"]</a>
+</div>
+
+<div class="card-panel">
+    <h3>@L["RequiredDocuments"]</h3>
+    <div class="doc-preview-grid">
+        @foreach (var doc in Model.Documents.OrderBy(d => d.DocumentType))
+        {
+            var labelKey = ServiceDocumentCatalog.GetLabelKey(serviceCode, doc.DocumentType);
+            <div class="doc-preview-card @(doc.NeedsCorrection ? "doc-needs-correction" : "")">
+                <i class="bi bi-file-earmark-text"></i>
+                <div>
+                    <strong>@L[labelKey]</strong>
+                    @if (doc.NeedsCorrection)
+                    {
+                        <span class="badge app-status-needscorrection">@L["NeedsCorrectionBadge"]</span>
+                    }
+                    else if (hasPendingCorrections)
+                    {
+                        <span class="badge app-status-approved">@L["DocumentAccepted"]</span>
+                    }
+                    <a href="/@doc.FilePath" target="_blank" class="d-block">@doc.OriginalFileName</a>
+                    @if (!string.IsNullOrWhiteSpace(doc.StaffComment))
+                    {
+                        <p class="doc-staff-note">@L["WhatToFix"]: @doc.StaffComment</p>
+                    }
+                    @if (doc.NeedsCorrection)
+                    {
+                        <a class="btn btn-sm btn-primary mt-2" asp-action="Resubmit" asp-route-id="@Model.Id">
+                            <i class="bi bi-upload"></i> @L["UploadCorrectedFile"]
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

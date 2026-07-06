@@ -1,0 +1,58 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ServiceCategory>
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    ViewData["Title"] = L["NavHome"];
+    var isTj = LocalizationHelper.IsTajik(Context);
+}
+
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">@L["HeroTitle"]</h1>
+        <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" asp-controller="Account" asp-action="Login">@L["HeroLogin"]</a>
+            <a class="btn btn-outline-primary btn-lg" asp-controller="Account" asp-action="Register">@L["HeroRegister"]</a>
+        </div>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <h2 class="section-title">@L["CategoriesTitle"]</h2>
+
+        <form class="search-bar" method="get" asp-action="Index">
+            <i class="bi bi-search"></i>
+            <input type="text" name="q" value="@ViewBag.SearchQuery" placeholder="@L["SearchPlaceholder"]" />
+        </form>
+
+        <div class="services-grid">
+            @foreach (var service in Model)
+            {
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="bi @service.IconClass"></i>
+                    </div>
+                    <h3>@(isTj ? service.TitleTj : service.TitleRu)</h3>
+                    <p>@(isTj ? service.DescriptionTj : service.DescriptionRu)</p>
+                    <div class="service-card-footer">
+                        @if (ServiceCodes.IsImplemented(service.ServiceCode))
+                        {
+                            @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Client"))
+                            {
+                                <a class="btn btn-primary btn-sm service-card-btn" asp-area="Client" asp-controller="ServiceApplications" asp-action="Apply" asp-route-serviceId="@service.Id">
+                                    @L["GetService"]
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-primary btn-sm service-card-btn" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Url.Action("Apply", "ServiceApplications", new { area = "Client", serviceId = service.Id })">
+                                    @L["GetService"]
+                                </a>
+                            }
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+</section>

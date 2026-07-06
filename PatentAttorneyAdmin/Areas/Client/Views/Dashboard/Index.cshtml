@@ -1,0 +1,88 @@
+@model PatentAttorneyAdmin.ViewModels.ClientDashboardViewModel
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    ViewData["Title"] = L["Dashboard"];
+    var isTj = LocalizationHelper.IsTajik(Context);
+}
+
+<div class="card-panel mb-3">
+    <div class="action-bar">
+        <a class="btn btn-primary" asp-controller="ServiceApplications" asp-action="Services">@L["SubmitApplication"]</a>
+        <a class="btn btn-outline-primary" asp-controller="ServiceApplications" asp-action="Index">@L["MyApplications"]</a>
+        <a class="btn btn-outline-secondary" asp-controller="Requests" asp-action="Create">@L["CreateRequest"]</a>
+    </div>
+</div>
+
+<div class="card-panel mb-3">
+    <h3>@L["MyApplications"]</h3>
+    @if (!Model.RecentApplications.Any())
+    {
+        <p class="text-muted">@L["NoApplications"]</p>
+        <a class="btn btn-primary btn-sm" asp-controller="ServiceApplications" asp-action="Services">@L["GetService"]</a>
+    }
+    else
+    {
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>@L["SelectedService"]</th>
+                    <th>@L["Status"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var app in Model.RecentApplications)
+                {
+                    <tr>
+                        <td>@(isTj ? app.ServiceCategory.TitleTj : app.ServiceCategory.TitleRu)</td>
+                        <td><span class="badge app-status-@app.Status.ToString().ToLower()">@GetAppStatus(app.Status)</span></td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-controller="ServiceApplications" asp-action="Details" asp-route-id="@app.Id">@L["View"]</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<div class="card-panel">
+    <h3>@L["MyRequests"]</h3>
+    @if (!Model.RecentRequests.Any())
+    {
+        <p class="text-muted">@L["NoRequests"]</p>
+    }
+    else
+    {
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>@L["Subject"]</th>
+                    <th>@L["Status"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var req in Model.RecentRequests)
+                {
+                    <tr>
+                        <td>@req.Subject</td>
+                        <td>@req.Status</td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-controller="Requests" asp-action="Details" asp-route-id="@req.Id">@L["View"]</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@functions {
+    string GetAppStatus(ServiceApplicationStatus status) => status switch
+    {
+        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
+        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
+        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
+        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
+        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
+        _ => status.ToString()
+    };
+}

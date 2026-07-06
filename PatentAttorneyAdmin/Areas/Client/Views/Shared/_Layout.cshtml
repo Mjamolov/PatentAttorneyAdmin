@@ -1,0 +1,62 @@
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<PatentAttorneyAdmin.Resources.SharedResource> L
+@{
+    var culture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name ?? "ru";
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="@culture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>@ViewData["Title"] - @L["NavCabinet"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="client-body">
+    <div class="client-shell">
+        <aside class="client-sidebar" id="clientSidebar">
+            <div class="admin-brand">@L["NavCabinet"]</div>
+            <nav>
+                <a asp-area="Client" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-speedometer2"></i> @L["Dashboard"]</a>
+                <a asp-area="Client" asp-controller="ServiceApplications" asp-action="Services"><i class="bi bi-plus-circle"></i> @L["SubmitApplication"]</a>
+                <a asp-area="Client" asp-controller="ServiceApplications" asp-action="Index"><i class="bi bi-file-earmark-text"></i> @L["MyApplications"]</a>
+                <a asp-area="Client" asp-controller="Requests" asp-action="Index"><i class="bi bi-chat-dots"></i> @L["MyRequests"]</a>
+                <a asp-area="Client" asp-controller="Requests" asp-action="Create"><i class="bi bi-plus-circle"></i> @L["CreateRequest"]</a>
+                <a asp-area="Client" asp-controller="Profile" asp-action="Index"><i class="bi bi-person"></i> @L["Profile"]</a>
+                <a asp-controller="Home" asp-action="Index" asp-area=""><i class="bi bi-house"></i> @L["NavHome"]</a>
+            </nav>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="mt-auto">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-outline-primary btn-sm w-100">@L["NavLogout"]</button>
+            </form>
+        </aside>
+        <div class="client-content">
+            <header class="client-topbar">
+                <div class="topbar-start">
+                    <button type="button" class="icon-btn mobile-nav-toggle" id="clientNavToggle" aria-expanded="false" aria-controls="clientSidebar" title="Menu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="lang-switcher">
+                    <form asp-controller="Culture" asp-action="Set" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="returnUrl" value="@returnUrl" />
+                        <button type="submit" name="culture" value="ru" class="lang-btn @(culture == "ru" ? "active" : "")">RU</button>
+                        <button type="submit" name="culture" value="tg" class="lang-btn @(culture == "tg" ? "active" : "")">TJ</button>
+                    </form>
+                </div>
+            </header>
+            <main class="client-main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

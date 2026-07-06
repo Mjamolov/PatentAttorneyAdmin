@@ -1,0 +1,23 @@
+@model PatentAttorneyAdmin.Models.ApplicationUser
+@{
+    ViewData["Title"] = L["Profile"];
+}
+
+<div class="card-panel">
+    <dl class="detail-list">
+        <dt>@L["LastName"]</dt><dd>@Model.LastName @Model.FirstName @Model.MiddleName</dd>
+        <dt>@L["Email"]</dt><dd>@Model.Email</dd>
+        <dt>@L["Phone"]</dt><dd>@Model.PhoneNumber</dd>
+        <dt>@L["PassportSeries"]</dt><dd>@Model.PassportSeries @Model.PassportNumber</dd>
+        <dt>@L["Status"]</dt>
+        <dd>
+            <span class="badge status-@Model.Status.ToString().ToLower()">
+                @(Model.Status switch {
+                    PatentAttorneyAdmin.Models.UserStatus.Pending => L["StatusPending"],
+                    PatentAttorneyAdmin.Models.UserStatus.Active => L["StatusActive"],
+                    _ => L["StatusDisabled"]
+                })
+            </span>
+        </dd>
+    </dl>
+</div>

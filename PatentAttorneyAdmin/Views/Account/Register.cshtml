@@ -1,0 +1,101 @@
+@model PatentAttorneyAdmin.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = L["RegisterTitle"];
+}
+
+<section class="page-section">
+    <div class="container">
+        <div class="form-card">
+            <h2>@L["RegisterTitle"]</h2>
+            <p class="register-info">@L["RegisterInfo"]</p>
+
+            @if (ViewBag.ServiceName != null)
+            {
+                <div class="selected-service-badge">
+                    <i class="bi bi-check-circle"></i>
+                    @L["SelectedService"]: <strong>@ViewBag.ServiceName</strong>
+                </div>
+            }
+
+            <form asp-action="Register" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="serviceId" value="@ViewBag.ServiceId" />
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control" autocomplete="family-name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control" autocomplete="given-name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MiddleName"></label>
+                        <input asp-for="MiddleName" class="form-control" autocomplete="additional-name" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="PassportSeries"></label>
+                        <input asp-for="PassportSeries" class="form-control" />
+                        <span asp-validation-for="PassportSeries" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PassportNumber"></label>
+                        <input asp-for="PassportNumber" class="form-control" />
+                        <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PassportIssuedDate"></label>
+                        <input asp-for="PassportIssuedDate" class="form-control" type="date" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PassportIssuedBy"></label>
+                    <input asp-for="PassportIssuedBy" class="form-control" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input asp-for="Phone" class="form-control" placeholder="+992901234567" autocomplete="tel" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" type="email" autocomplete="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="PassportFront"></label>
+                        <input asp-for="PassportFront" class="form-control" type="file" accept="@UploadFileTypes.AcceptAttribute" />
+                        <span asp-validation-for="PassportFront" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PassportBack"></label>
+                        <input asp-for="PassportBack" class="form-control" type="file" accept="@UploadFileTypes.AcceptAttribute" />
+                        <span asp-validation-for="PassportBack" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg">@L["RegisterSubmit"]</button>
+                <p class="mt-3">
+                    @L["NavLogin"]? <a asp-action="Login">@L["LoginSubmit"]</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

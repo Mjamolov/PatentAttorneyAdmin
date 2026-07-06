@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SiteTitle" xml:space="preserve"><value>Единый портал патентных услуг</value></data>
+  <data name="NavHome" xml:space="preserve"><value>Главная</value></data>
+  <data name="NavNews" xml:space="preserve"><value>Новости</value></data>
+  <data name="NavLogin" xml:space="preserve"><value>Войти</value></data>
+  <data name="NavRegister" xml:space="preserve"><value>Регистрация</value></data>
+  <data name="NavCabinet" xml:space="preserve"><value>Личный кабинет</value></data>
+  <data name="NavAdmin" xml:space="preserve"><value>Админ-панель</value></data>
+  <data name="NavLogout" xml:space="preserve"><value>Выйти</value></data>
+  <data name="HeroTitle" xml:space="preserve"><value>Единый портал патентных услуг</value></data>
+  <data name="HeroLogin" xml:space="preserve"><value>Войти в систему</value></data>
+  <data name="HeroRegister" xml:space="preserve"><value>Подать заявку</value></data>
+  <data name="CategoriesTitle" xml:space="preserve"><value>Категории услуг</value></data>
+  <data name="SearchPlaceholder" xml:space="preserve"><value>Поиск услуг</value></data>
+  <data name="FirstName" xml:space="preserve"><value>Имя</value></data>
+  <data name="LastName" xml:space="preserve"><value>Фамилия</value></data>
+  <data name="MiddleName" xml:space="preserve"><value>Отчество</value></data>
+  <data name="PassportSeries" xml:space="preserve"><value>Серия паспорта</value></data>
+  <data name="PassportNumber" xml:space="preserve"><value>Номер паспорта</value></data>
+  <data name="PassportIssuedBy" xml:space="preserve"><value>Кем выдан</value></data>
+  <data name="PassportIssuedDate" xml:space="preserve"><value>Дата выдачи</value></data>
+  <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
+  <data name="Email" xml:space="preserve"><value>Электронная почта</value></data>
+  <data name="Password" xml:space="preserve"><value>Пароль</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Запомнить меня</value></data>
+  <data name="PassportFront" xml:space="preserve"><value>Паспорт (лицевая сторона)</value></data>
+  <data name="PassportBack" xml:space="preserve"><value>Паспорт (обратная сторона)</value></data>
+  <data name="RegisterTitle" xml:space="preserve"><value>Регистрация заявителя</value></data>
+  <data name="RegisterSubmit" xml:space="preserve"><value>Зарегистрироваться</value></data>
+  <data name="LoginTitle" xml:space="preserve"><value>Вход в систему</value></data>
+  <data name="LoginSubmit" xml:space="preserve"><value>Войти</value></data>
+  <data name="Required" xml:space="preserve"><value>Обязательное поле</value></data>
+  <data name="UnsupportedFileType" xml:space="preserve"><value>Неподдерживаемый формат файла. Разрешены: PDF, JPEG, Word (DOC, DOCX)</value></data>
+  <data name="InvalidEmail" xml:space="preserve"><value>Некорректный email</value></data>
+  <data name="InvalidPhone" xml:space="preserve"><value>Некорректный телефон</value></data>
+  <data name="RegisterSuccess" xml:space="preserve"><value>Регистрация успешна. Пароль отправлен на вашу почту.</value></data>
+  <data name="RegisterSuccessPending" xml:space="preserve"><value>Регистрация завершена. Пароль отправлен на почту. После подтверждения администратором вы сможете войти в личный кабинет.</value></data>
+  <data name="RegisterInfo" xml:space="preserve"><value>Заполните форму. Пароль для входа будет отправлен на указанный email. Доступ откроется после проверки данных администратором.</value></data>
+  <data name="RegisterEmailNote" xml:space="preserve"><value>Используйте этот пароль для входа после активации аккаунта администратором.</value></data>
+  <data name="EmailExists" xml:space="preserve"><value>Пользователь с таким email уже зарегистрирован</value></data>
+  <data name="SelectedService" xml:space="preserve"><value>Выбранная услуга</value></data>
+  <data name="RegisterError" xml:space="preserve"><value>Ошибка регистрации</value></data>
+  <data name="LoginError" xml:space="preserve"><value>Неверный email или пароль</value></data>
+  <data name="AccountDisabled" xml:space="preserve"><value>Ваш аккаунт отключён. Обратитесь к администратору.</value></data>
+  <data name="AccountPending" xml:space="preserve"><value>Ваш аккаунт ожидает подтверждения администратором.</value></data>
+  <data name="Subject" xml:space="preserve"><value>Тема</value></data>
+  <data name="Message" xml:space="preserve"><value>Сообщение</value></data>
+  <data name="RequestType" xml:space="preserve"><value>Тип запроса</value></data>
+  <data name="Attachment" xml:space="preserve"><value>Вложение</value></data>
+  <data name="CreateRequest" xml:space="preserve"><value>Создать запрос</value></data>
+  <data name="MyRequests" xml:space="preserve"><value>Мои запросы</value></data>
+  <data name="Send" xml:space="preserve"><value>Отправить</value></data>
+  <data name="Reply" xml:space="preserve"><value>Ответить</value></data>
+  <data name="Users" xml:space="preserve"><value>Пользователи</value></data>
+  <data name="Requests" xml:space="preserve"><value>Запросы</value></data>
+  <data name="Status" xml:space="preserve"><value>Статус</value></data>
+  <data name="Actions" xml:space="preserve"><value>Действия</value></data>
+  <data name="Activate" xml:space="preserve"><value>Активировать</value></data>
+  <data name="Disable" xml:space="preserve"><value>Отключить</value></data>
+  <data name="View" xml:space="preserve"><value>Просмотр</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>Панель управления</value></data>
+  <data name="Profile" xml:space="preserve"><value>Профиль</value></data>
+  <data name="NoRequests" xml:space="preserve"><value>Запросов пока нет</value></data>
+  <data name="TypeGeneral" xml:space="preserve"><value>Общий запрос</value></data>
+  <data name="TypeInvitation" xml:space="preserve"><value>Приглашение</value></data>
+  <data name="TypeDocumentCorrection" xml:space="preserve"><value>Исправление документа</value></data>
+  <data name="StatusPending" xml:space="preserve"><value>Ожидает</value></data>
+  <data name="StatusActive" xml:space="preserve"><value>Активен</value></data>
+  <data name="StatusDisabled" xml:space="preserve"><value>Отключён</value></data>
+  <data name="AccessDenied" xml:space="preserve"><value>Доступ запрещён</value></data>
+  <data name="Back" xml:space="preserve"><value>Назад</value></data>
+  <data name="Save" xml:space="preserve"><value>Сохранить</value></data>
+  <data name="RegisteredAt" xml:space="preserve"><value>Дата регистрации</value></data>
+  <data name="TotalUsers" xml:space="preserve"><value>Всего пользователей</value></data>
+  <data name="TotalRequests" xml:space="preserve"><value>Всего запросов</value></data>
+  <data name="OpenRequests" xml:space="preserve"><value>Открытых запросов</value></data>
+  <data name="PendingUsers" xml:space="preserve"><value>Ожидают активации</value></data>
+  <data name="SelectService" xml:space="preserve"><value>Выбрать услугу</value></data>
+  <data name="NewsPlaceholder" xml:space="preserve"><value>Раздел новостей в разработке</value></data>
+  <data name="GetService" xml:space="preserve"><value>Получить услугу</value></data>
+  <data name="MyApplications" xml:space="preserve"><value>Мои заявки</value></data>
+  <data name="ServiceApplications" xml:space="preserve"><value>Заявки на услуги</value></data>
+  <data name="NoApplications" xml:space="preserve"><value>Заявок пока нет</value></data>
+  <data name="SubmitApplication" xml:space="preserve"><value>Отправить заявку</value></data>
+  <data name="ApplicationSubmitted" xml:space="preserve"><value>Заявка отправлена. Ожидайте ответа сотрудников.</value></data>
+  <data name="ApplicationAlreadyPending" xml:space="preserve"><value>У вас уже есть активная заявка по этой услуге.</value></data>
+  <data name="ApplicationWaitingNotice" xml:space="preserve"><value>После отправки заявка будет рассмотрена сотрудниками. Вы получите ответ в личном кабинете и на email.</value></data>
+  <data name="ApplicationStatusChanged" xml:space="preserve"><value>Статус вашей заявки изменён.</value></data>
+  <data name="ApplicationReviewed" xml:space="preserve"><value>Решение по заявке сохранено.</value></data>
+  <data name="ReviewApplication" xml:space="preserve"><value>Рассмотрение заявки</value></data>
+  <data name="StaffResponse" xml:space="preserve"><value>Ответ сотрудника</value></data>
+  <data name="RequiredDocuments" xml:space="preserve"><value>Необходимые документы</value></data>
+  <data name="AllowedFileFormats" xml:space="preserve"><value>Форматы: PDF, JPEG, Word (DOC, DOCX)</value></data>
+  <data name="StepOne" xml:space="preserve"><value>Шаг первый</value></data>
+  <data name="HomsCourseDescription" xml:space="preserve"><value>Заявление на обучение в курсе «Основы интеллектуальной собственности» (кафедра ХОМС). По окончании выдаётся сертификат.</value></data>
+  <data name="DocApplicationLetter" xml:space="preserve"><value>Заявление на имя Директора Патентного ведомства</value></data>
+  <data name="DocApplicationLetterHint" xml:space="preserve"><value>Загрузите заявление в формате PDF, JPG или PNG</value></data>
+  <data name="DocPassportCopy" xml:space="preserve"><value>Копия паспорта гражданина</value></data>
+  <data name="DocPassportCopyHint" xml:space="preserve"><value>Нусхаи шиноснома / копия документа, удостоверяющего личность</value></data>
+  <data name="DocDiplomaCopy" xml:space="preserve"><value>Копия документа об образовании (диплом)</value></data>
+  <data name="DocDiplomaCopyHint" xml:space="preserve"><value>Нусхаи ҳуҷҷат дар бораи ихтисос</value></data>
+  <data name="DocPaymentProof" xml:space="preserve"><value>Подтверждение оплаты за обучение</value></data>
+  <data name="DocPaymentProofHint" xml:space="preserve"><value>Документ, подтверждающий оплату услуги обучения</value></data>
+  <data name="AppStatusSubmitted" xml:space="preserve"><value>Отправлена</value></data>
+  <data name="AppStatusUnderReview" xml:space="preserve"><value>На рассмотрении</value></data>
+  <data name="AppStatusApproved" xml:space="preserve"><value>Одобрена</value></data>
+  <data name="AppStatusRejected" xml:space="preserve"><value>Отклонена</value></data>
+  <data name="AppStatusNeedsCorrection" xml:space="preserve"><value>Требует исправления</value></data>
+  <data name="PatentRepCertDescription" xml:space="preserve"><value>Заявление на прохождение аттестации для регистрации в качестве патентного представителя Республики Таджикистан.</value></data>
+  <data name="RegisterCertDescription" xml:space="preserve"><value>Заявление для лиц, успешно сдавших квалификационный экзамен, на регистрацию в Реестре и получение свидетельства патентного поверенного.</value></data>
+  <data name="VrisLicenseDescription" xml:space="preserve"><value>Заявление на получение лицензии (ВРИС). Загрузите основные и дополнительные документы.</value></data>
+  <data name="DocGroupMain" xml:space="preserve"><value>Основные документы</value></data>
+  <data name="DocGroupAdditional" xml:space="preserve"><value>Дополнительные документы</value></data>
+  <data name="DocPersonnelForm" xml:space="preserve"><value>Личный листок по учёту кадров</value></data>
+  <data name="DocPersonnelFormHint" xml:space="preserve"><value>Варақаи баҳисобгирии кадрҳо</value></data>
+  <data name="DocPhotos3x4" xml:space="preserve"><value>Две фотографии 3×4</value></data>
+  <data name="DocPhotos3x4Hint" xml:space="preserve"><value>Ду адад расми 3х4</value></data>
+  <data name="DocDiplomaHigher" xml:space="preserve"><value>Копия диплома о высшем образовании</value></data>
+  <data name="DocDiplomaHigherHint" xml:space="preserve"><value>Нусхаи диплом оид ба таҳсилоти олӣ</value></data>
+  <data name="DocPracticalWorkInfo" xml:space="preserve"><value>Сведения о практической работе в сфере охраны объектов промышленной собственности</value></data>
+  <data name="DocPracticalWorkInfoHint" xml:space="preserve"><value>Маълумоти хаттӣ доир ба кори амалии номзад (шаҳодатномаи курси АМЗ қабул аст)</value></data>
+  <data name="DocWorkBookExtract" xml:space="preserve"><value>Выписка из трудовой книжки</value></data>
+  <data name="DocWorkBookExtractHint" xml:space="preserve"><value>Иқтибос аз дафтарчаи меҳнатӣ</value></data>
+  <data name="DocCertificationPayment" xml:space="preserve"><value>Подтверждение оплаты за аттестацию</value></data>
+  <data name="DocCertificationPaymentHint" xml:space="preserve"><value>Ҳуҷҷате, ки пардохти маблағи аттестатсияро тасдиқ мекунад</value></data>
+  <data name="DocVrisDiploma" xml:space="preserve"><value>Копия диплома (право, технические или естественные науки)</value></data>
+  <data name="DocVrisDiplomaHint" xml:space="preserve"><value>Нусхаи диплом дар бораи таҳсилот (ҳуқуқ, илмҳои техникӣ ё табиӣ)</value></data>
+  <data name="DocAttestationDecision" xml:space="preserve"><value>Решение аттестационной комиссии</value></data>
+  <data name="DocAttestationDecisionHint" xml:space="preserve"><value>Қарори Комиссияи аттестатсионӣ</value></data>
+  <data name="DocSiCertificate" xml:space="preserve"><value>Копия свидетельства о регистрации СИ</value></data>
+  <data name="DocSiCertificateHint" xml:space="preserve"><value>Нусхаи шаҳодатномаи қайди СИ</value></data>
+  <data name="DocRegisterCertificate" xml:space="preserve"><value>Копия свидетельства о регистрации в Реестре</value></data>
+  <data name="DocRegisterCertificateHint" xml:space="preserve"><value>Нусхаи шаҳодатномаи бақайдгирӣ дар Феҳрист</value></data>
+  <data name="DocStateFeePayment" xml:space="preserve"><value>Подтверждение оплаты государственной пошлины</value></data>
+  <data name="DocStateFeePaymentHint" xml:space="preserve"><value>Ҳуҷҷати тасдиқкунандаи боҷи давлатӣ</value></data>
+  <data name="AvailableServices" xml:space="preserve"><value>Доступные услуги</value></data>
+  <data name="SelectServiceToApply" xml:space="preserve"><value>Выберите услугу и загрузите необходимые документы</value></data>
+  <data name="ResubmitApplication" xml:space="preserve"><value>Отправить исправленные документы</value></data>
+  <data name="ApplicationResubmitted" xml:space="preserve"><value>Исправленные документы отправлены на повторное рассмотрение</value></data>
+  <data name="ResubmitNotice" xml:space="preserve"><value>Загрузите исправленные документы заново по всем полям</value></data>
+  <data name="ResubmitNoticePartial" xml:space="preserve"><value>Замените только отмеченные документы. Остальные уже приняты и повторно загружать не нужно.</value></data>
+  <data name="CorrectionCommentRequired" xml:space="preserve"><value>Укажите комментарий для клиента: что именно нужно исправить</value></data>
+  <data name="SelectDocumentsToCorrect" xml:space="preserve"><value>Выберите хотя бы один документ, который нужно исправить</value></data>
+  <data name="CorrectionRequested" xml:space="preserve"><value>Запрос на исправление отправлен клиенту</value></data>
+  <data name="UseCorrectionForm" xml:space="preserve"><value>Для запроса исправления используйте форму ниже: укажите комментарий и отметьте документы</value></data>
+  <data name="RequestCorrectionHint" xml:space="preserve"><value>Отметьте документы с ошибками и опишите, что клиенту нужно исправить. Клиент заменит только выбранные файлы.</value></data>
+  <data name="SendCorrectionRequest" xml:space="preserve"><value>Отправить запрос на исправление</value></data>
+  <data name="DocumentCommentPlaceholder" xml:space="preserve"><value>Что исправить в этом документе (необязательно)</value></data>
+  <data name="NeedsCorrectionBadge" xml:space="preserve"><value>Нужно исправить</value></data>
+  <data name="DocumentAccepted" xml:space="preserve"><value>Принят</value></data>
+  <data name="NoReuploadNeeded" xml:space="preserve"><value>Повторная загрузка не требуется</value></data>
+  <data name="WhatToFix" xml:space="preserve"><value>Что исправить</value></data>
+  <data name="CurrentFile" xml:space="preserve"><value>Текущий файл</value></data>
+  <data name="UploadCorrectedFile" xml:space="preserve"><value>Загрузить исправленный файл</value></data>
+  <data name="CorrectionRequiredNotice" xml:space="preserve"><value>Требуется исправление документов. Пожалуйста, загрузите исправленные файлы.</value></data>
+  <data name="ApplicantInfo" xml:space="preserve"><value>Данные заявителя</value></data>
+  <data name="QuickActions" xml:space="preserve"><value>Быстрые действия</value></data>
+  <data name="ApproveApplication" xml:space="preserve"><value>Одобрить</value></data>
+  <data name="RejectApplication" xml:space="preserve"><value>Отклонить</value></data>
+  <data name="RequestCorrection" xml:space="preserve"><value>Запросить исправление</value></data>
+  <data name="FilterAll" xml:space="preserve"><value>Все</value></data>
+  <data name="StaffCommentPlaceholder" xml:space="preserve"><value>Комментарий для клиента (будет отправлен на email)</value></data>
+  <data name="ViewInCabinet" xml:space="preserve"><value>Подробности доступны в личном кабинете.</value></data>
+</root>

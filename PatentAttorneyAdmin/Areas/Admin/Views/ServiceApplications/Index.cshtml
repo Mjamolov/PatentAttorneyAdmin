@@ -1,0 +1,75 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ServiceApplication>
+@using PatentAttorneyAdmin.Models
+@{
+    var isTj = (bool)ViewBag.IsTj;
+    var filterStatus = ViewBag.FilterStatus as ServiceApplicationStatus?;
+    var newCount = (int)ViewBag.NewCount;
+    ViewData["Title"] = L["ServiceApplications"];
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success mb-3">@TempData["Success"]</div>
+}
+
+<div class="card-panel mb-3">
+    <div class="action-bar filter-bar">
+        <a class="filter-btn @(filterStatus == null ? "active" : "")" asp-action="Index">@L["FilterAll"]</a>
+        <a class="filter-btn @(filterStatus == ServiceApplicationStatus.Submitted ? "active" : "")" asp-action="Index" asp-route-status="@((int)ServiceApplicationStatus.Submitted)">
+            @L["AppStatusSubmitted"] (@newCount)
+        </a>
+        <a class="filter-btn @(filterStatus == ServiceApplicationStatus.UnderReview ? "active" : "")" asp-action="Index" asp-route-status="@((int)ServiceApplicationStatus.UnderReview)">@L["AppStatusUnderReview"]</a>
+        <a class="filter-btn @(filterStatus == ServiceApplicationStatus.NeedsCorrection ? "active" : "")" asp-action="Index" asp-route-status="@((int)ServiceApplicationStatus.NeedsCorrection)">@L["AppStatusNeedsCorrection"]</a>
+        <a class="filter-btn @(filterStatus == ServiceApplicationStatus.Approved ? "active" : "")" asp-action="Index" asp-route-status="@((int)ServiceApplicationStatus.Approved)">@L["AppStatusApproved"]</a>
+        <a class="filter-btn @(filterStatus == ServiceApplicationStatus.Rejected ? "active" : "")" asp-action="Index" asp-route-status="@((int)ServiceApplicationStatus.Rejected)">@L["AppStatusRejected"]</a>
+    </div>
+</div>
+
+<div class="card-panel">
+    @if (!Model.Any())
+    {
+        <p class="text-muted">@L["NoApplications"]</p>
+    }
+    else
+    {
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>@L["LastName"]</th>
+                    <th>@L["SelectedService"]</th>
+                    <th>@L["Status"]</th>
+                    <th>@L["RegisteredAt"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var app in Model)
+                {
+                    <tr class="@(app.Status == ServiceApplicationStatus.Submitted ? "row-new" : "")">
+                        <td>@app.Id</td>
+                        <td>@app.User.LastName @app.User.FirstName</td>
+                        <td>@(isTj ? app.ServiceCategory.TitleTj : app.ServiceCategory.TitleRu)</td>
+                        <td><span class="badge app-status-@app.Status.ToString().ToLower()">@GetStatus(app.Status)</span></td>
+                        <td>@app.SubmittedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@app.Id">@L["ReviewApplication"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@functions {
+    string GetStatus(ServiceApplicationStatus status) => status switch
+    {
+        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
+        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
+        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
+        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
+        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
+        _ => status.ToString()
+    };
+}

@@ -1,0 +1,42 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ApplicationUser>
+@{
+    ViewData["Title"] = L["Users"];
+}
+
+<div class="card-panel">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>@L["LastName"]</th>
+                <th>@L["Email"]</th>
+                <th>@L["Phone"]</th>
+                <th>@L["Status"]</th>
+                <th>@L["RegisteredAt"]</th>
+                <th>@L["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.LastName @user.FirstName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>
+                        <span class="badge status-@user.Status.ToString().ToLower()">
+                            @(user.Status switch {
+                                PatentAttorneyAdmin.Models.UserStatus.Pending => L["StatusPending"],
+                                PatentAttorneyAdmin.Models.UserStatus.Active => L["StatusActive"],
+                                _ => L["StatusDisabled"]
+                            })
+                        </span>
+                    </td>
+                    <td>@user.RegisteredAt.ToLocalTime().ToString("dd.MM.yyyy")</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@user.Id">@L["View"]</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

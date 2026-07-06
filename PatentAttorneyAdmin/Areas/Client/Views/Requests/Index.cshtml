@@ -1,0 +1,43 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ClientRequest>
+@{
+    ViewData["Title"] = L["MyRequests"];
+}
+
+<div class="card-panel">
+    <div class="action-bar mb-3">
+        <a class="btn btn-primary" asp-action="Create">@L["CreateRequest"]</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">@L["NoRequests"]</p>
+    }
+    else
+    {
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>@L["Subject"]</th>
+                    <th>@L["RequestType"]</th>
+                    <th>@L["Status"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var req in Model)
+                {
+                    <tr>
+                        <td>@req.Subject</td>
+                        <td>@(req.Type switch {
+                            PatentAttorneyAdmin.Models.RequestType.Invitation => L["TypeInvitation"],
+                            PatentAttorneyAdmin.Models.RequestType.DocumentCorrection => L["TypeDocumentCorrection"],
+                            _ => L["TypeGeneral"]
+                        })</td>
+                        <td>@req.Status</td>
+                        <td><a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@req.Id">@L["View"]</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,78 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ServiceApplication>
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    ViewData["Title"] = L["MyApplications"];
+    var isTj = LocalizationHelper.IsTajik(Context);
+
+    string StatusLabel(ServiceApplicationStatus status) => status switch
+    {
+        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
+        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
+        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
+        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
+        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
+        _ => status.ToString()
+    };
+}
+
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-success mb-3">@TempData["Info"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success mb-3">@TempData["Success"]</div>
+}
+
+<div class="card-panel mb-3">
+    <div class="action-bar">
+        <a class="btn btn-primary" asp-action="Services">@L["SubmitApplication"]</a>
+    </div>
+</div>
+
+<div class="card-panel">
+    @if (!Model.Any())
+    {
+        <p class="text-muted">@L["NoApplications"]</p>
+        <a class="btn btn-primary" asp-action="Services">@L["GetService"]</a>
+    }
+    else
+    {
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>@L["SelectedService"]</th>
+                    <th>@L["Status"]</th>
+                    <th>@L["RegisteredAt"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var app in Model)
+                {
+                    var needsCorrection = ApplicationCorrectionHelper.HasPendingCorrections(app);
+                    <tr>
+                        <td>@app.Id</td>
+                        <td>@(isTj ? app.ServiceCategory.TitleTj : app.ServiceCategory.TitleRu)</td>
+                        <td>
+                            <span class="badge app-status-@(needsCorrection ? "needscorrection" : app.Status.ToString().ToLower())">
+                                @(needsCorrection ? L["AppStatusNeedsCorrection"] : StatusLabel(app.Status))
+                            </span>
+                        </td>
+                        <td>@app.SubmittedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@app.Id">@L["View"]</a>
+                            @if (needsCorrection)
+                            {
+                                <a class="btn btn-sm btn-primary" asp-action="Resubmit" asp-route-id="@app.Id">@L["ResubmitApplication"]</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+

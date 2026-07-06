@@ -1,0 +1,67 @@
+@model PatentAttorneyAdmin.Models.ClientRequest
+@{
+    ViewData["Title"] = Model.Subject;
+}
+
+<div class="card-panel mb-3">
+    <dl class="detail-list">
+        <dt>@L["Subject"]</dt><dd>@Model.Subject</dd>
+        <dt>@L["LastName"]</dt><dd>@Model.User.LastName @Model.User.FirstName</dd>
+        <dt>@L["RequestType"]</dt>
+        <dd>@(Model.Type switch {
+            PatentAttorneyAdmin.Models.RequestType.Invitation => L["TypeInvitation"],
+            PatentAttorneyAdmin.Models.RequestType.DocumentCorrection => L["TypeDocumentCorrection"],
+            _ => L["TypeGeneral"]
+        })</dd>
+        <dt>@L["Status"]</dt><dd>@Model.Status</dd>
+    </dl>
+
+    <form asp-action="SetStatus" method="post" class="action-bar">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <select name="status" class="form-control form-control-sm" style="width:auto;display:inline-block;">
+            @foreach (PatentAttorneyAdmin.Models.RequestStatus s in Enum.GetValues(typeof(PatentAttorneyAdmin.Models.RequestStatus)))
+            {
+                <option value="@((int)s)" selected="@(Model.Status == s)">@s</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-sm btn-primary">@L["Save"]</button>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">@L["Back"]</a>
+    </form>
+</div>
+
+<div class="messages-thread">
+    @foreach (var msg in Model.Messages)
+    {
+        <div class="message @(msg.IsFromStaff ? "message-staff" : "message-client")">
+            <div class="message-meta">
+                @(msg.IsFromStaff ? L["NavAdmin"] : L["NavCabinet"])
+                · @msg.SentAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+            </div>
+            <div class="message-body">@msg.Body</div>
+            @if (!string.IsNullOrEmpty(msg.AttachmentPath))
+            {
+                <a href="/@msg.AttachmentPath" target="_blank" class="message-attachment">
+                    <i class="bi bi-paperclip"></i> @(msg.AttachmentFileName ?? L["Attachment"])
+                </a>
+            }
+        </div>
+    }
+</div>
+
+<div class="card-panel mt-3">
+    <h3>@L["Reply"]</h3>
+    <form asp-action="Reply" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="RequestId" value="@Model.Id" />
+        <div class="form-group">
+            <label>@L["Message"]</label>
+            <textarea name="Body" class="form-control" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>@L["Attachment"]</label>
+            <input type="file" name="Attachment" class="form-control" accept="@UploadFileTypes.AcceptAttribute" />
+        </div>
+        <button type="submit" class="btn btn-primary">@L["Send"]</button>
+    </form>
+</div>

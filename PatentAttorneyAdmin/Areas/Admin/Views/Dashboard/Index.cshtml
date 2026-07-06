@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = L["Dashboard"];
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-label">@L["TotalUsers"]</span>
+        <span class="stat-value">@ViewBag.TotalUsers</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">@L["PendingUsers"]</span>
+        <span class="stat-value">@ViewBag.PendingUsers</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">@L["TotalRequests"]</span>
+        <span class="stat-value">@ViewBag.TotalRequests</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">@L["OpenRequests"]</span>
+        <span class="stat-value">@ViewBag.OpenRequests</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">@L["ServiceApplications"]</span>
+        <span class="stat-value">@ViewBag.OpenServiceApplications</span>
+    </div>
+</div>

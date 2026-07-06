@@ -1,0 +1,143 @@
+@model PatentAttorneyAdmin.ViewModels.ServiceApplicationSubmitViewModel
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    var service = (ServiceCategory)ViewBag.Service!;
+    var requirements = (IReadOnlyList<DocumentRequirement>)ViewBag.Requirements!;
+    var descriptionKey = (string)ViewBag.DescriptionKey!;
+    var isTj = LocalizationHelper.IsTajik(Context);
+    var isResubmit = ViewBag.IsResubmit == true;
+    var applicationId = ViewBag.ApplicationId as int?;
+    var existingDocuments = ViewBag.ExistingDocuments as Dictionary<int, ServiceApplicationDocument>;
+    var documentsToCorrect = ViewBag.DocumentsToCorrect as HashSet<int>;
+    var applicationStaffComment = ViewBag.ApplicationStaffComment as string;
+    ViewData["Title"] = isTj ? service.TitleTj : service.TitleRu;
+
+    var grouped = requirements
+        .Select((r, i) => new { Req = r, Index = i })
+        .GroupBy(x => x.Req.GroupKey ?? "")
+        .ToList();
+}
+
+<div class="card-panel mb-3">
+    <span class="step-label">@(isResubmit ? L["ResubmitApplication"] : L["StepOne"])</span>
+    <h2 class="service-apply-title">@(isTj ? service.TitleTj : service.TitleRu)</h2>
+    <p class="text-muted">@L[descriptionKey]</p>
+    @if (isResubmit)
+    {
+        <div class="waiting-notice mt-3">
+            <i class="bi bi-exclamation-triangle"></i>
+            @L["ResubmitNoticePartial"]
+        </div>
+        @if (!string.IsNullOrWhiteSpace(applicationStaffComment))
+        {
+            <div class="staff-response mt-3">
+                <strong>@L["StaffResponse"]:</strong>
+                <p>@applicationStaffComment</p>
+            </div>
+        }
+    }
+</div>
+
+<div class="stepper">
+    @for (var s = 1; s <= 4; s++)
+    {
+        <div class="stepper-item @(s == 1 ? "active" : "")"><span>@s</span></div>
+        @if (s < 4) { <div class="stepper-line"></div> }
+    }
+</div>
+<p class="stepper-caption">@L["RequiredDocuments"]</p>
+
+@if (isResubmit && applicationId.HasValue)
+{
+    <form asp-action="Resubmit" asp-route-id="@applicationId" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+        @foreach (var group in grouped)
+        {
+            @if (!string.IsNullOrEmpty(group.Key)) { <h3 class="doc-group-title">@L[group.Key]</h3> }
+            <div class="doc-upload-grid">
+                @foreach (var item in group)
+                {
+                    var docKey = (int)item.Req.Type;
+                    var needsCorrection = documentsToCorrect?.Contains(docKey) == true;
+                    var existingDoc = existingDocuments != null && existingDocuments.TryGetValue(docKey, out var doc) ? doc : null;
+                    <div class="doc-upload-card @(needsCorrection ? "doc-needs-correction" : "doc-accepted")">
+                        <div class="doc-step">@(item.Index + 1)</div>
+                        <h3>@L[item.Req.LabelKey]</h3>
+                        @if (!string.IsNullOrEmpty(item.Req.HintKey)) { <p class="text-muted">@L[item.Req.HintKey]</p> }
+
+                        @if (needsCorrection)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(existingDoc?.StaffComment))
+                            {
+                                <div class="doc-staff-note-box">
+                                    <strong>@L["WhatToFix"]:</strong>
+                                    <p>@existingDoc.StaffComment</p>
+                                </div>
+                            }
+                            @if (existingDoc != null)
+                            {
+                                <p class="text-muted current-file-hint">
+                                    @L["CurrentFile"]:
+                                    <a href="/@existingDoc.FilePath" target="_blank">@existingDoc.OriginalFileName</a>
+                                </p>
+                            }
+                            <p class="text-muted upload-formats-hint">@L["AllowedFileFormats"]</p>
+                            <input type="file" name="Documents[@docKey]" class="form-control" accept="@UploadFileTypes.AcceptAttribute" />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Documents[@docKey]" data-valmsg-replace="true"></span>
+                        }
+                        else if (existingDoc != null)
+                        {
+                            <span class="badge app-status-approved">@L["DocumentAccepted"]</span>
+                            <p class="text-muted current-file-hint">
+                                <a href="/@existingDoc.FilePath" target="_blank">@existingDoc.OriginalFileName</a>
+                            </p>
+                            <p class="text-muted">@L["NoReuploadNeeded"]</p>
+                        }
+                    </div>
+                }
+            </div>
+        }
+        <div class="action-bar">
+            <button type="submit" class="btn btn-primary btn-lg">@L["ResubmitApplication"]</button>
+            <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@applicationId">@L["Back"]</a>
+        </div>
+    </form>
+}
+else
+{
+    <form asp-action="Apply" asp-route-serviceId="@service.Id" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+        @foreach (var group in grouped)
+        {
+            @if (!string.IsNullOrEmpty(group.Key)) { <h3 class="doc-group-title">@L[group.Key]</h3> }
+            <div class="doc-upload-grid">
+                @foreach (var item in group)
+                {
+                    <div class="doc-upload-card">
+                        <div class="doc-step">@(item.Index + 1)</div>
+                        <h3>@L[item.Req.LabelKey]</h3>
+                        @if (!string.IsNullOrEmpty(item.Req.HintKey)) { <p class="text-muted">@L[item.Req.HintKey]</p> }
+                        <p class="text-muted upload-formats-hint">@L["AllowedFileFormats"]</p>
+                        <input type="file" name="Documents[@((int)item.Req.Type)]" class="form-control" accept="@UploadFileTypes.AcceptAttribute" />
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Documents[@((int)item.Req.Type)]" data-valmsg-replace="true"></span>
+                    </div>
+                }
+            </div>
+        }
+        <div class="waiting-notice">
+            <i class="bi bi-info-circle"></i>
+            @L["ApplicationWaitingNotice"]
+        </div>
+        <div class="action-bar">
+            <button type="submit" class="btn btn-primary btn-lg">@L["SubmitApplication"]</button>
+            <a class="btn btn-outline-secondary" asp-action="Services">@L["Back"]</a>
+        </div>
+    </form>
+}
+
+@section Scripts {
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}

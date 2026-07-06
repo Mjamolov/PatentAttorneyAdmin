@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SiteTitle" xml:space="preserve"><value>Портали ягонаи хизматрасонии патентӣ</value></data>
+  <data name="NavHome" xml:space="preserve"><value>Асосӣ</value></data>
+  <data name="NavNews" xml:space="preserve"><value>Хабарҳо</value></data>
+  <data name="NavLogin" xml:space="preserve"><value>Воридшавӣ</value></data>
+  <data name="NavRegister" xml:space="preserve"><value>Сабти ном</value></data>
+  <data name="NavCabinet" xml:space="preserve"><value>Кабинети шахсӣ</value></data>
+  <data name="NavAdmin" xml:space="preserve"><value>Панели идоракунӣ</value></data>
+  <data name="NavLogout" xml:space="preserve"><value>Баромад</value></data>
+  <data name="HeroTitle" xml:space="preserve"><value>Портали ягонаи хизматрасонии патентӣ</value></data>
+  <data name="HeroLogin" xml:space="preserve"><value>Ворид шудан ба система</value></data>
+  <data name="HeroRegister" xml:space="preserve"><value>Пешниҳоди дархост</value></data>
+  <data name="CategoriesTitle" xml:space="preserve"><value>Категорияҳои хизматрасонӣ</value></data>
+  <data name="SearchPlaceholder" xml:space="preserve"><value>Ҷустуҷӯи хизматҳо</value></data>
+  <data name="FirstName" xml:space="preserve"><value>Ном</value></data>
+  <data name="LastName" xml:space="preserve"><value>Насаб</value></data>
+  <data name="MiddleName" xml:space="preserve"><value>Номи падар</value></data>
+  <data name="PassportSeries" xml:space="preserve"><value>Серияи шиноснома</value></data>
+  <data name="PassportNumber" xml:space="preserve"><value>Рақами шиноснома</value></data>
+  <data name="PassportIssuedBy" xml:space="preserve"><value>Аз тарафи кӣ дода шудааст</value></data>
+  <data name="PassportIssuedDate" xml:space="preserve"><value>Санаи додан</value></data>
+  <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
+  <data name="Email" xml:space="preserve"><value>Почтаи электронӣ</value></data>
+  <data name="Password" xml:space="preserve"><value>Парол</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Маро дар хотир нигоҳ дор</value></data>
+  <data name="PassportFront" xml:space="preserve"><value>Шиноснома (тарафи пеш)</value></data>
+  <data name="PassportBack" xml:space="preserve"><value>Шиноснома (тарафи қафо)</value></data>
+  <data name="RegisterTitle" xml:space="preserve"><value>Сабти номи дархостдиҳанда</value></data>
+  <data name="RegisterSubmit" xml:space="preserve"><value>Сабти ном</value></data>
+  <data name="LoginTitle" xml:space="preserve"><value>Воридшавӣ ба система</value></data>
+  <data name="LoginSubmit" xml:space="preserve"><value>Ворид шудан</value></data>
+  <data name="Required" xml:space="preserve"><value>Майдони ҳатмӣ</value></data>
+  <data name="UnsupportedFileType" xml:space="preserve"><value>Формати файл дастгирӣ намешавад. Иҷозат дода шудааст: PDF, JPEG, Word (DOC, DOCX)</value></data>
+  <data name="InvalidEmail" xml:space="preserve"><value>Email нодуруст</value></data>
+  <data name="InvalidPhone" xml:space="preserve"><value>Телефони нодуруст</value></data>
+  <data name="RegisterSuccess" xml:space="preserve"><value>Сабти ном муваффақ шуд. Парол ба почтаи шумо фиристода шуд.</value></data>
+  <data name="RegisterSuccessPending" xml:space="preserve"><value>Сабти ном анҷом ёфт. Парол ба почта фиристода шуд. Пас аз тасдиқи маъмур шумо метавонед ба кабинет ворид шавед.</value></data>
+  <data name="RegisterInfo" xml:space="preserve"><value>Шаклро пур кунед. Парол ба почтаи электронии нишондодашуда фиристода мешавад. Дастрасӣ пас аз санҷиши маъмур кушода мешавад.</value></data>
+  <data name="RegisterEmailNote" xml:space="preserve"><value>Ин паролро пас аз фаъолсозии ҳисоб аз тарафи маъмур барои воридшавӣ истифода баред.</value></data>
+  <data name="EmailExists" xml:space="preserve"><value>Корбар бо ин email аллакай сабти ном шудааст</value></data>
+  <data name="SelectedService" xml:space="preserve"><value>Хизмати интихобшуда</value></data>
+  <data name="RegisterError" xml:space="preserve"><value>Хатогии сабти ном</value></data>
+  <data name="LoginError" xml:space="preserve"><value>Email ё парол нодуруст</value></data>
+  <data name="AccountDisabled" xml:space="preserve"><value>Ҳисоби шумо ғайрифаъол аст. Ба маъмур муроҷиат кунед.</value></data>
+  <data name="AccountPending" xml:space="preserve"><value>Ҳисоби шумо интизори тасдиқи маъмур аст.</value></data>
+  <data name="Subject" xml:space="preserve"><value>Мавзӯъ</value></data>
+  <data name="Message" xml:space="preserve"><value>Паём</value></data>
+  <data name="RequestType" xml:space="preserve"><value>Навъи дархост</value></data>
+  <data name="Attachment" xml:space="preserve"><value>Пайванд</value></data>
+  <data name="CreateRequest" xml:space="preserve"><value>Сохтани дархост</value></data>
+  <data name="MyRequests" xml:space="preserve"><value>Дархостҳои ман</value></data>
+  <data name="Send" xml:space="preserve"><value>Ирсол</value></data>
+  <data name="Reply" xml:space="preserve"><value>Ҷавоб додан</value></data>
+  <data name="Users" xml:space="preserve"><value>Корбарон</value></data>
+  <data name="Requests" xml:space="preserve"><value>Дархостҳо</value></data>
+  <data name="Status" xml:space="preserve"><value>Ҳолат</value></data>
+  <data name="Actions" xml:space="preserve"><value>Амалҳо</value></data>
+  <data name="Activate" xml:space="preserve"><value>Фаъол кардан</value></data>
+  <data name="Disable" xml:space="preserve"><value>Ғайрифаъол кардан</value></data>
+  <data name="View" xml:space="preserve"><value>Намоиш</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>Панели идоракунӣ</value></data>
+  <data name="Profile" xml:space="preserve"><value>Профил</value></data>
+  <data name="NoRequests" xml:space="preserve"><value>Дархостҳо ҳоло нестанд</value></data>
+  <data name="TypeGeneral" xml:space="preserve"><value>Дархости умумӣ</value></data>
+  <data name="TypeInvitation" xml:space="preserve"><value>Даъватнома</value></data>
+  <data name="TypeDocumentCorrection" xml:space="preserve"><value>Ислоҳи ҳуҷҷат</value></data>
+  <data name="StatusPending" xml:space="preserve"><value>Интизор</value></data>
+  <data name="StatusActive" xml:space="preserve"><value>Фаъол</value></data>
+  <data name="StatusDisabled" xml:space="preserve"><value>Ғайрифаъол</value></data>
+  <data name="AccessDenied" xml:space="preserve"><value>Дастрасӣ манъ аст</value></data>
+  <data name="Back" xml:space="preserve"><value>Бозгашт</value></data>
+  <data name="Save" xml:space="preserve"><value>Нигоҳ доштан</value></data>
+  <data name="RegisteredAt" xml:space="preserve"><value>Санаи сабти ном</value></data>
+  <data name="TotalUsers" xml:space="preserve"><value>Ҳамаи корбарон</value></data>
+  <data name="TotalRequests" xml:space="preserve"><value>Ҳамаи дархостҳо</value></data>
+  <data name="OpenRequests" xml:space="preserve"><value>Дархостҳои кушода</value></data>
+  <data name="PendingUsers" xml:space="preserve"><value>Интизори фаъолсозӣ</value></data>
+  <data name="SelectService" xml:space="preserve"><value>Интихоби хизмат</value></data>
+  <data name="NewsPlaceholder" xml:space="preserve"><value>Қисми хабарҳо дар руи кор аст</value></data>
+  <data name="GetService" xml:space="preserve"><value>Гирифтани хизматрасонӣ</value></data>
+  <data name="MyApplications" xml:space="preserve"><value>Аризаҳои ман</value></data>
+  <data name="ServiceApplications" xml:space="preserve"><value>Аризаҳои хизматрасонӣ</value></data>
+  <data name="NoApplications" xml:space="preserve"><value>Аризаҳо ҳоло нестанд</value></data>
+  <data name="SubmitApplication" xml:space="preserve"><value>Ирсоли ариза</value></data>
+  <data name="ApplicationSubmitted" xml:space="preserve"><value>Ариза фиристода шуд. Интизори ҷавоби кормандон бошед.</value></data>
+  <data name="ApplicationAlreadyPending" xml:space="preserve"><value>Шумо аллакай аризаи фаъол дошта метавонед барои ин хизмат.</value></data>
+  <data name="ApplicationWaitingNotice" xml:space="preserve"><value>Пас аз ирсол, ариза аз тарафи кормандон баррасӣ мешавад. Ҷавоб дар кабинети шахсӣ ва почтаи электронӣ мерасад.</value></data>
+  <data name="ApplicationStatusChanged" xml:space="preserve"><value>Ҳолати аризаи шумо тағйир ёфт.</value></data>
+  <data name="ApplicationReviewed" xml:space="preserve"><value>Қарор оид ба ариза нигоҳ дошта шуд.</value></data>
+  <data name="ReviewApplication" xml:space="preserve"><value>Баррасии ариза</value></data>
+  <data name="StaffResponse" xml:space="preserve"><value>Ҷавоби корманд</value></data>
+  <data name="RequiredDocuments" xml:space="preserve"><value>Ҳуҷҷатҳои зарурӣ</value></data>
+  <data name="AllowedFileFormats" xml:space="preserve"><value>Форматҳо: PDF, JPEG, Word (DOC, DOCX)</value></data>
+  <data name="StepOne" xml:space="preserve"><value>Қадами якум</value></data>
+  <data name="HomsCourseDescription" xml:space="preserve"><value>Ариза барои таҳсил дар курси «Асосҳои моликияти зеҳнӣ» (кафедраи ҲОМС). Пас аз анҷом сертификат дода мешавад.</value></data>
+  <data name="DocApplicationLetter" xml:space="preserve"><value>Ариза ба номи Директори Идораи патентӣ</value></data>
+  <data name="DocApplicationLetterHint" xml:space="preserve"><value>Аризаро дар формати PDF, JPG ё PNG бор кунед</value></data>
+  <data name="DocPassportCopy" xml:space="preserve"><value>Нусхаи шиносномаи шаҳрвандӣ</value></data>
+  <data name="DocPassportCopyHint" xml:space="preserve"><value>Нусхаи ҳуҷҷати шиноснома</value></data>
+  <data name="DocDiplomaCopy" xml:space="preserve"><value>Нусхаи ҳуҷҷат дар бораи ихтисос (диплом)</value></data>
+  <data name="DocDiplomaCopyHint" xml:space="preserve"><value>Нусхаи дипломи ихтисосӣ</value></data>
+  <data name="DocPaymentProof" xml:space="preserve"><value>Тасдиқи пардохти таҳсил</value></data>
+  <data name="DocPaymentProofHint" xml:space="preserve"><value>Ҳуҷҷати тасдиқкунандаи пардохти хизматрасонӣ</value></data>
+  <data name="AppStatusSubmitted" xml:space="preserve"><value>Фиристода шуд</value></data>
+  <data name="AppStatusUnderReview" xml:space="preserve"><value>Дар баррасӣ</value></data>
+  <data name="AppStatusApproved" xml:space="preserve"><value>Тасдиқ шуд</value></data>
+  <data name="AppStatusRejected" xml:space="preserve"><value>Рад шуд</value></data>
+  <data name="AppStatusNeedsCorrection" xml:space="preserve"><value>Ислоҳ лозим аст</value></data>
+  <data name="PatentRepCertDescription" xml:space="preserve"><value>Ариза барои гузаштан аз аттестатсия ба ҳайси намояндаи патентии Ҷумҳурии Тоҷикистон.</value></data>
+  <data name="RegisterCertDescription" xml:space="preserve"><value>Ариза барои бақайдгирӣ дар Феҳрист ва гирифтани шаҳодатномаи патентии вакил пас аз гузаронидани имтиҳон.</value></data>
+  <data name="VrisLicenseDescription" xml:space="preserve"><value>Ариза барои гирифтани иҷозатнома (ВРИС). Ҳуҷҷатҳои асосӣ ва иловагӣ бор кунед.</value></data>
+  <data name="DocGroupMain" xml:space="preserve"><value>Ҳуҷҷатҳои асосӣ</value></data>
+  <data name="DocGroupAdditional" xml:space="preserve"><value>Ҳуҷҷатҳои иловагӣ</value></data>
+  <data name="DocPersonnelForm" xml:space="preserve"><value>Варақаи баҳисобгирии кадрҳо</value></data>
+  <data name="DocPersonnelFormHint" xml:space="preserve"><value>Шакли шахсии ба ҳисобгирии кадрҳо</value></data>
+  <data name="DocPhotos3x4" xml:space="preserve"><value>Ду адад расми 3х4</value></data>
+  <data name="DocPhotos3x4Hint" xml:space="preserve"><value>Ду расми андозаи 3×4</value></data>
+  <data name="DocDiplomaHigher" xml:space="preserve"><value>Нусхаи диплом оид ба таҳсилоти олӣ</value></data>
+  <data name="DocDiplomaHigherHint" xml:space="preserve"><value>Нусхаи дипломи таҳсилоти олӣ</value></data>
+  <data name="DocPracticalWorkInfo" xml:space="preserve"><value>Маълумоти хаттӣ доир ба кори амалии номзад</value></data>
+  <data name="DocPracticalWorkInfoHint" xml:space="preserve"><value>Шаҳодатномаи курси АМЗ қабул аст</value></data>
+  <data name="DocWorkBookExtract" xml:space="preserve"><value>Иқтибос аз дафтарчаи меҳнатӣ</value></data>
+  <data name="DocWorkBookExtractHint" xml:space="preserve"><value>Иқтибос аз дафтари кор</value></data>
+  <data name="DocCertificationPayment" xml:space="preserve"><value>Тасдиқи пардохти аттестатсия</value></data>
+  <data name="DocCertificationPaymentHint" xml:space="preserve"><value>Ҳуҷҷати тасдиқи пардохти маблағи аттестатсия</value></data>
+  <data name="DocVrisDiploma" xml:space="preserve"><value>Нусхаи диплом (ҳуқуқ, илмҳои техникӣ ё табиӣ)</value></data>
+  <data name="DocVrisDiplomaHint" xml:space="preserve"><value>Нусхаи диплом дар бораи таҳсилот</value></data>
+  <data name="DocAttestationDecision" xml:space="preserve"><value>Қарори Комиссияи аттестатсионӣ</value></data>
+  <data name="DocAttestationDecisionHint" xml:space="preserve"><value>Қарори комиссияи аттестатсионӣ</value></data>
+  <data name="DocSiCertificate" xml:space="preserve"><value>Нусхаи шаҳодатномаи қайди СИ</value></data>
+  <data name="DocSiCertificateHint" xml:space="preserve"><value>Шаҳодатномаи бақайдгирии СИ</value></data>
+  <data name="DocRegisterCertificate" xml:space="preserve"><value>Нусхаи шаҳодатномаи бақайдгирӣ дар Феҳрист</value></data>
+  <data name="DocRegisterCertificateHint" xml:space="preserve"><value>Шаҳодатномаи қайд дар Феҳрист</value></data>
+  <data name="DocStateFeePayment" xml:space="preserve"><value>Тасдиқи пардохти боҷи давлатӣ</value></data>
+  <data name="DocStateFeePaymentHint" xml:space="preserve"><value>Ҳуҷҷати тасдиқкунандаи боҷи давлатӣ</value></data>
+  <data name="AvailableServices" xml:space="preserve"><value>Хизматҳои дастрас</value></data>
+  <data name="SelectServiceToApply" xml:space="preserve"><value>Хизматро интихоб кунед ва ҳуҷҷатҳои зарурӣ бор кунед</value></data>
+  <data name="ResubmitApplication" xml:space="preserve"><value>Ирсоли ҳуҷҷатҳои ислоҳшуда</value></data>
+  <data name="ApplicationResubmitted" xml:space="preserve"><value>Ҳуҷҷатҳои ислоҳшуда барои баррасии такрорӣ фиристода шуданд</value></data>
+  <data name="ResubmitNotice" xml:space="preserve"><value>Ҳуҷҷатҳои ислоҳшударо дар ҳамаи майдонҳо аз нав бор кунед</value></data>
+  <data name="ResubmitNoticePartial" xml:space="preserve"><value>Танҳо ҳуҷҷатҳои қайдшударо иваз кунед. Бақия қабул шудаанд ва такрор бор кардан лозим нест.</value></data>
+  <data name="CorrectionCommentRequired" xml:space="preserve"><value>Барои мизоҷ шарҳ нависед: чӣ ислоҳ кардан лозим аст</value></data>
+  <data name="SelectDocumentsToCorrect" xml:space="preserve"><value>Ҳадди ақал як ҳуҷҷати ислоҳшавандаро интихоб кунед</value></data>
+  <data name="CorrectionRequested" xml:space="preserve"><value>Дархости ислоҳ ба мизоҷ фиристода шуд</value></data>
+  <data name="UseCorrectionForm" xml:space="preserve"><value>Барои дархости ислоҳ аз формаи поён истифода баред: шарҳ нависед ва ҳуҷҷатҳоро қайд кунед</value></data>
+  <data name="RequestCorrectionHint" xml:space="preserve"><value>Ҳуҷҷатҳои хатоиро қайд кунед ва тавсиф кунед, ки мизоҷ чӣ ислоҳ кунад. Мизоҷ танҳо файлҳои интихобшударо иваз мекунад.</value></data>
+  <data name="SendCorrectionRequest" xml:space="preserve"><value>Фиристодани дархости ислоҳ</value></data>
+  <data name="DocumentCommentPlaceholder" xml:space="preserve"><value>Дар ин ҳуҷҷат чӣ ислоҳ кардан лозим (ихтиёрӣ)</value></data>
+  <data name="NeedsCorrectionBadge" xml:space="preserve"><value>Ислоҳ лозим</value></data>
+  <data name="DocumentAccepted" xml:space="preserve"><value>Қабул шуд</value></data>
+  <data name="NoReuploadNeeded" xml:space="preserve"><value>Боркунии такрорӣ лозим нест</value></data>
+  <data name="WhatToFix" xml:space="preserve"><value>Чӣ ислоҳ кардан лозим</value></data>
+  <data name="CurrentFile" xml:space="preserve"><value>Файли ҷорӣ</value></data>
+  <data name="UploadCorrectedFile" xml:space="preserve"><value>Бор кардани файли ислоҳшуда</value></data>
+  <data name="CorrectionRequiredNotice" xml:space="preserve"><value>Ислоҳи ҳуҷҷатҳо лозим аст. Лутфан файлҳои ислоҳшударо бор кунед.</value></data>
+  <data name="ApplicantInfo" xml:space="preserve"><value>Маълумоти дархостдиҳанда</value></data>
+  <data name="QuickActions" xml:space="preserve"><value>Амалҳои зуд</value></data>
+  <data name="ApproveApplication" xml:space="preserve"><value>Тасдиқ кардан</value></data>
+  <data name="RejectApplication" xml:space="preserve"><value>Рад кардан</value></data>
+  <data name="RequestCorrection" xml:space="preserve"><value>Дархости ислоҳ</value></data>
+  <data name="FilterAll" xml:space="preserve"><value>Ҳама</value></data>
+  <data name="StaffCommentPlaceholder" xml:space="preserve"><value>Шарҳ барои мизоҷ (ба email меравад)</value></data>
+  <data name="ViewInCabinet" xml:space="preserve"><value>Тафсилот дар кабинети шахсӣ дастрас аст.</value></data>
+</root>

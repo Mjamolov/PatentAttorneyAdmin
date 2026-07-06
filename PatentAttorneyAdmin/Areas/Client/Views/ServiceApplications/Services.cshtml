@@ -1,0 +1,57 @@
+@model IEnumerable<PatentAttorneyAdmin.Models.ServiceCategory>
+@using PatentAttorneyAdmin.Infrastructure
+@using PatentAttorneyAdmin.Models
+@{
+    var isTj = (bool)ViewBag.IsTj;
+    var activeByService = (Dictionary<int, ServiceApplication>)ViewBag.ActiveByService;
+    ViewData["Title"] = L["AvailableServices"];
+
+    string StatusLabel(ServiceApplicationStatus status) => status switch
+    {
+        ServiceApplicationStatus.Submitted => L["AppStatusSubmitted"],
+        ServiceApplicationStatus.UnderReview => L["AppStatusUnderReview"],
+        ServiceApplicationStatus.Approved => L["AppStatusApproved"],
+        ServiceApplicationStatus.Rejected => L["AppStatusRejected"],
+        ServiceApplicationStatus.NeedsCorrection => L["AppStatusNeedsCorrection"],
+        _ => status.ToString()
+    };
+}
+
+<div class="card-panel mb-3">
+    <h2>@L["AvailableServices"]</h2>
+    <p class="text-muted">@L["SelectServiceToApply"]</p>
+</div>
+
+<div class="services-grid">
+    @foreach (var service in Model)
+    {
+        activeByService.TryGetValue(service.Id, out var activeApp);
+        <article class="service-card">
+            <div class="service-icon"><i class="bi @service.IconClass"></i></div>
+            <h3>@(isTj ? service.TitleTj : service.TitleRu)</h3>
+            <p>@(isTj ? service.DescriptionTj : service.DescriptionRu)</p>
+            <div class="service-card-footer">
+                @if (activeApp != null)
+                {
+                    var needsCorrection = ApplicationCorrectionHelper.HasPendingCorrections(activeApp);
+                    <span class="badge app-status-@(needsCorrection ? "needscorrection" : activeApp.Status.ToString().ToLower())">
+                        @(needsCorrection ? L["AppStatusNeedsCorrection"] : StatusLabel(activeApp.Status))
+                    </span>
+                    @if (needsCorrection)
+                    {
+                        <a class="btn btn-primary btn-sm service-card-btn" asp-action="Resubmit" asp-route-id="@activeApp.Id">@L["ResubmitApplication"]</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-primary btn-sm service-card-btn" asp-action="Details" asp-route-id="@activeApp.Id">@L["View"]</a>
+                    }
+                }
+                else
+                {
+                    <a class="btn btn-primary btn-sm service-card-btn" asp-action="Apply" asp-route-serviceId="@service.Id">@L["GetService"]</a>
+                }
+            </div>
+        </article>
+    }
+</div>
+
